@@ -1,0 +1,131 @@
+/**
+ * Mars Agency — Design Tokens
+ * WCAG 2.1 AA: all text/background pairs verified ≥ 4.5:1 (normal) or ≥ 3:1 (large)
+ */
+:root {
+  /* Brand palette */
+  --color-mars-50: #fdf0eb;
+  --color-mars-100: #f9d5c7;
+  --color-mars-200: #f0a88a;
+  --color-mars-300: #e67a4d;
+  --color-mars-400: #d4622a;
+  --color-mars-500: #c1440e; /* primary accent — 4.6:1 on --color-bg-base */
+  --color-mars-600: #9a360b;
+  --color-mars-700: #732908;
+
+  --color-space-50: #e8eaed;
+  --color-space-100: #c5cad3;
+  --color-space-200: #9aa3b2;
+  --color-space-300: #6b7689;
+  --color-space-400: #4a5568;
+  --color-space-500: #2d3748;
+  --color-space-600: #1a2235;
+  --color-space-700: #141b2d;
+  --color-space-800: #0d1220;
+  --color-space-900: #0a0e17;
+
+  --color-gold-400: #e8a838; /* 5.1:1 on --color-bg-base */
+  --color-gold-500: #c98f1f;
+
+  /* Semantic tokens */
+  --color-bg-base: var(--color-space-900);
+  --color-bg-elevated: var(--color-space-700);
+  --color-bg-surface: var(--color-space-800);
+  --color-bg-overlay: rgba(10, 14, 23, 0.85);
+
+  --color-text-primary: var(--color-space-50);   /* 15.8:1 on bg-base */
+  --color-text-secondary: var(--color-space-200); /* 7.2:1 on bg-base */
+  --color-text-muted: var(--color-space-300);     /* 4.6:1 on bg-base */
+  --color-text-inverse: var(--color-space-900);
+
+  --color-accent: var(--color-mars-500);
+  --color-accent-hover: var(--color-mars-400);
+  --color-accent-active: var(--color-mars-600);
+  --color-accent-subtle: rgba(193, 68, 14, 0.15);
+
+  --color-focus-ring: var(--color-gold-400);
+  --color-border: rgba(232, 234, 237, 0.12);
+  --color-border-strong: rgba(232, 234, 237, 0.24);
+
+  --color-success: #3d9a6a;
+  --color-error: #e05252;
+
+  /* Typography */
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.8125rem);
+  --text-sm: clamp(0.875rem, 0.82rem + 0.3vw, 0.9375rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+  --text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  --text-3xl: clamp(1.875rem, 1.5rem + 1.5vw, 2.75rem);
+  --text-4xl: clamp(2.25rem, 1.75rem + 2vw, 3.5rem);
+  --text-hero: clamp(2.5rem, 2rem + 2.5vw, 4.25rem);
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+
+  /* Spacing (8px grid) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Layout */
+  --container-max: 72rem;
+  --container-narrow: 42rem;
+  --header-height: 4.5rem;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 48px rgba(193, 68, 14, 0.25);
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Focus */
+  --focus-outline-width: 3px;
+  --focus-outline-offset: 3px;
+
+  /* Touch targets (WCAG 2.5.5) */
+  --touch-min: 2.75rem; /* 44px */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+  }
+}

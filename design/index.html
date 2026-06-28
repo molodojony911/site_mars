@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mars Agency — креативное агентство полного цикла. Брендинг, digital и стратегия для амбициозных компаний.">
+  <title>Mars Agency — Креативное агентство</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link sr-only sr-only-focusable">Перейти к основному содержимому</a>
+
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="#" class="logo" aria-label="Mars Agency — на главную">
+        <svg class="logo__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
+          <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+          <circle cx="16" cy="16" r="6" fill="currentColor"/>
+          <path d="M8 20c4-2 12-2 16 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Mars Agency
+      </a>
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Открыть меню навигации"
+      >
+        <svg class="nav-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list" role="list">
+          <li><a href="#services" class="site-nav__link">Услуги</a></li>
+          <li><a href="#work" class="site-nav__link">Работы</a></li>
+          <li><a href="#process" class="site-nav__link">Процесс</a></li>
+          <li><a href="#testimonials" class="site-nav__link">Отзывы</a></li>
+        </ul>
+        <div class="site-nav__cta">
+          <a href="#contact" class="btn btn--primary">Обсудить проект</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__orb hero__orb--mars"></div>
+        <div class="hero__orb hero__orb--gold"></div>
+        <div class="hero__grid"></div>
+      </div>
+      <div class="container">
+        <div class="hero__content">
+          <div class="hero__badge">
+            <span class="hero__badge-dot" aria-hidden="true"></span>
+            Принимаем проекты на Q3 2026
+          </div>
+          <h1 class="hero__title" id="hero-title">
+            Создаём бренды, которые&nbsp;<span class="hero__title-accent">запоминаются</span>
+          </h1>
+          <p class="hero__lead">
+            Mars Agency — креативное агентство полного цикла. Стратегия, визуальная идентичность и digital-продукты для компаний, которые хотят выделиться.
+          </p>
+          <div class="hero__actions">
+            <a href="#contact" class="btn btn--primary btn--lg">Начать проект</a>
+            <a href="#work" class="btn btn--secondary btn--lg">Смотреть кейсы</a>
+          </div>
+          <dl class="hero__stats">
+            <div>
+              <dt class="sr-only">Количество реализованных проектов</dt>
+              <dd class="stat__value">120+</dd>
+              <dd class="stat__label">проектов</dd>
+            </div>
+            <div>
+              <dt class="sr-only">Средний срок работы с клиентом</dt>
+              <dd class="stat__value">4 года</dd>
+              <dd class="stat__label">средний LTV клиента</dd>
+            </div>
+            <div>
+              <dt class="sr-only">Награды индустрии</dt>
+              <dd class="stat__value">18</dd>
+              <dd class="stat__label">наград</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__eyebrow">Услуги</span>
+          <h2 class="section__title" id="services-title">Всё для роста вашего бренда</h2>
+          <p class="section__lead">
+            От стратегии до запуска — закрываем полный цикл, чтобы вы могли сосредоточиться на бизнесе.
+          </p>
+        </header>
+        <div class="services__grid" role="list">
+          <article class="service-card" role="listitem">
+            <div class="service-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Брендинг</h3>
+            <p class="service-card__desc">Нейминг, айдентика, гайдлайны и tone of voice — единый образ на всех точках контакта.</p>
+          </article>
+          <article class="service-card" role="listitem">
+            <div class="service-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <path d="M8 21h8M12 17v4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Digital</h3>
+            <p class="service-card__desc">Сайты, лендинги и веб-приложения с фокусом на конверсию и доступность.</p>
+          </article>
+          <article class="service-card" role="listitem">
+            <div class="service-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Стратегия</h3>
+            <p class="service-card__desc">Позиционирование, исследования аудитории и roadmap развития бренда.</p>
+          </article>
+          <article class="service-card" role="listitem">
+            <div class="service-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Контент</h3>
+            <p class="service-card__desc">Фото, видео и motion-дизайн для соцсетей, рекламы и презентаций.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work -->
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__eyebrow">Портфолио</span>
+          <h2 class="section__title" id="work-title">Избранные проекты</h2>
+          <p class="section__lead">
+            Каждый кейс — это история трансформации бренда и измеримый результат для клиента.
+          </p>
+        </header>
+        <div class="work__grid">
+          <a href="#" class="work-card">
+            <div class="work-card__visual">
+              <span class="work-card__tag">Fintech</span>
+            </div>
+            <div class="work-card__body">
+              <h3 class="work-card__title">NovaPay</h3>
+              <p class="work-card__desc">Ребрендинг и запуск мобильного приложения. +47% узнаваемости за 6 месяцев.</p>
+            </div>
+          </a>
+          <a href="#" class="work-card">
+            <div class="work-card__visual">
+              <span class="work-card__tag">E-commerce</span>
+            </div>
+            <div class="work-card__body">
+              <h3 class="work-card__title">GreenLeaf</h3>
+              <p class="work-card__desc">E-commerce платформа с устойчивым позиционированием. Конверсия выросла на 32%.</p>
+            </div>
+          </a>
+          <a href="#" class="work-card">
+            <div class="work-card__visual">
+              <span class="work-card__tag">SaaS</span>
+            </div>
+            <div class="work-card__body">
+              <h3 class="work-card__title">DataPulse</h3>
+              <p class="work-card__desc">Визуальная система и маркетинговый сайт для B2B-стартапа. Series A $12M.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section process" id="process" aria-labelledby="process-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__eyebrow">Процесс</span>
+          <h2 class="section__title" id="process-title">Как мы работаем</h2>
+          <p class="section__lead">
+            Прозрачный процесс с чёткими этапами — вы всегда знаете, на каком этапе проект и что будет дальше.
+          </p>
+        </header>
+        <ol class="process__steps">
+          <li class="process-step">
+            <h3 class="process-step__title">Исследование</h3>
+            <p class="process-step__desc">Погружаемся в бизнес, аудиторию и конкурентов. Формируем стратегическую основу.</p>
+          </li>
+          <li class="process-step">
+            <h3 class="process-step__title">Концепция</h3>
+            <p class="process-step__desc">Разрабатываем 2–3 направления. Вы выбираете, мы дорабатываем до финала.</p>
+          </li>
+          <li class="process-step">
+            <h3 class="process-step__title">Реализация</h3>
+            <p class="process-step__desc">Дизайн, прототипирование и разработка. Еженедельные синки и демо.</p>
+          </li>
+          <li class="process-step">
+            <h3 class="process-step__title">Запуск</h3>
+            <p class="process-step__desc">Передаём все материалы, обучаем команду и сопровождаем первые недели.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" id="testimonials" aria-labelledby="testimonials-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__eyebrow">Отзывы</span>
+          <h2 class="section__title" id="testimonials-title">Что говорят клиенты</h2>
+          <p class="section__lead">
+            Долгосрочные отношения — наш главный показатель качества.
+          </p>
+        </header>
+        <div class="testimonials__grid" role="list">
+          <figure class="testimonial-card" role="listitem">
+            <blockquote class="testimonial-card__quote">
+              <p>Mars Agency полностью переосмыслили наш бренд. Результат превзошёл ожидания — и по визуалу, и по бизнес-метрикам.</p>
+            </blockquote>
+            <figcaption class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">АК</div>
+              <div>
+                <cite class="testimonial-card__name">Анна Козлова</cite>
+                <p class="testimonial-card__role">CEO, NovaPay</p>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="testimonial-card" role="listitem">
+            <blockquote class="testimonial-card__quote">
+              <p>Работали над тремя проектами подряд. Команда глубоко погружается в продукт и предлагает решения, о которых мы сами не думали.</p>
+            </blockquote>
+            <figcaption class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">ДМ</div>
+              <div>
+                <cite class="testimonial-card__name">Дмитрий Морозов</cite>
+                <p class="testimonial-card__role">CMO, GreenLeaf</p>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="testimonial-card" role="listitem">
+            <blockquote class="testimonial-card__quote">
+              <p>Сайт, который они сделали, стал нашим главным каналом лидогенерации. Конверсия из визита в заявку — 8,4%.</p>
+            </blockquote>
+            <figcaption class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">ЕС</div>
+              <div>
+                <cite class="testimonial-card__name">Елена Соколова</cite>
+                <p class="testimonial-card__role">Founder, DataPulse</p>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-banner" id="contact" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-banner__inner">
+          <div class="cta-banner__glow" aria-hidden="true"></div>
+          <h2 class="cta-banner__title" id="cta-title">Готовы вывести бренд на новый уровень?</h2>
+          <p class="cta-banner__lead">
+            Расскажите о проекте — мы ответим в течение 24 часов и предложим формат сотрудничества.
+          </p>
+          <div class="cta-banner__actions">
+            <a href="mailto:hello@marsagency.ru" class="btn btn--primary btn--lg">hello@marsagency.ru</a>
+            <a href="tel:+74951234567" class="btn btn--secondary btn--lg">+7 (495) 123-45-67</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a href="#" class="logo" aria-label="Mars Agency — на главную">
+            <svg class="logo__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
+              <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+              <circle cx="16" cy="16" r="6" fill="currentColor"/>
+              <path d="M8 20c4-2 12-2 16 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Mars Agency
+          </a>
+          <p class="site-footer__brand-desc">
+            Креативное агентство полного цикла. Москва, работаем с клиентами по всему миру.
+          </p>
+        </div>
+        <div>
+          <h2 class="site-footer__heading">Навигация</h2>
+          <ul class="site-footer__links" role="list">
+            <li><a href="#services" class="site-footer__link">Услуги</a></li>
+            <li><a href="#work" class="site-footer__link">Работы</a></li>
+            <li><a href="#process" class="site-footer__link">Процесс</a></li>
+            <li><a href="#contact" class="site-footer__link">Контакты</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="site-footer__heading">Контакты</h2>
+          <ul class="site-footer__links" role="list">
+            <li><a href="mailto:hello@marsagency.ru" class="site-footer__link">hello@marsagency.ru</a></li>
+            <li><a href="tel:+74951234567" class="site-footer__link">+7 (495) 123-45-67</a></li>
+            <li><span class="site-footer__link">Москва, Россия</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p class="site-footer__copy">&copy; 2026 Mars Agency. Все права защищены.</p>
+        <div class="site-footer__social" role="list" aria-label="Социальные сети">
+          <a href="#" class="social-link" role="listitem" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" role="listitem" aria-label="Behance">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+              <path d="M7.5 11.5h3.2c1.1 0 2-.4 2.6-1.1.5-.6.8-1.4.8-2.3 0-2-1.5-3.3-3.8-3.3H4v12.5h3.5V11.5zm0-2.7h2.9c1 0 1.6.5 1.6 1.4 0 .9-.6 1.4-1.6 1.4H7.5V8.8zm8.1 6.4c.8.7 1.8 1.1 3 1.1 1.8 0 3-1 3-2.5 0-1.1-.7-1.9-2.3-2.3l-1-.2c-.7-.2-1-.4-1-.8 0-.5.4-.8 1.1-.8.7 0 1.3.3 1.8.8l1.5-1.5c-.8-.7-1.8-1.1-3-1.1-1.7 0-2.9 1-2.9 2.4 0 1.1.7 1.9 2.1 2.2l1 .2c.8.2 1.1.4 1.1.9 0 .5-.5.9-1.3.9-.9 0-1.6-.4-2.1-1.1l-1.6 1.4zM15.5 7h3.5V5.5H15.5V7z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" role="listitem" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+              <path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector(".nav-toggle");
+      var nav = document.getElementById("site-nav");
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener("click", function () {
+        var isOpen = nav.getAttribute("data-open") === "true";
+        nav.setAttribute("data-open", String(!isOpen));
+        toggle.setAttribute("aria-expanded", String(!isOpen));
+        toggle.setAttribute("aria-label", isOpen ? "Открыть меню навигации" : "Закрыть меню навигации");
+      });
+
+      nav.querySelectorAll(".site-nav__link, .site-nav__cta a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          nav.setAttribute("data-open", "false");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Открыть меню навигации");
+        });
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && nav.getAttribute("data-open") === "true") {
+          nav.setAttribute("data-open", "false");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Открыть меню навигации");
+          toggle.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
