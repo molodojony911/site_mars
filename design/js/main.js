@@ -1,6 +1,6 @@
 /**
  * MARS Agency landing — minimal interactions
- * Mobile nav, FAQ accordion, form validation stub
+ * Mobile nav, FAQ accordion, lead form validation stub
  */
 
 (function () {
@@ -10,7 +10,7 @@
   const mobileNav = document.querySelector(".mobile-nav");
   const mobileNavLinks = document.querySelectorAll(".mobile-nav__link, .mobile-nav__sublink");
   const faqButtons = document.querySelectorAll(".faq-item__button");
-  const form = document.querySelector(".contact-form");
+  const leadForms = document.querySelectorAll(".lead-form");
 
   /* ── Mobile navigation ───────────────────────────────────── */
 
@@ -78,35 +78,69 @@
     });
   });
 
-  /* ── Form validation (prototype) ───────────────────────── */
+  /* ── Lead form validation (prototype) ────────────────────── */
 
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      let valid = true;
+  function getFieldErrorElement(field) {
+    const describedBy = field.getAttribute("aria-describedby");
+    if (describedBy) {
+      const errorId = describedBy.split(" ").find((id) => id.endsWith("-error"));
+      if (errorId) return document.getElementById(errorId);
+    }
 
-      const requiredFields = form.querySelectorAll("[required]");
-      requiredFields.forEach((field) => {
-        const errorEl = document.getElementById(field.getAttribute("aria-describedby")?.split(" ")[1] || "");
-        const groupError = field.closest(".form__group")?.querySelector(".form__error");
+    return field.closest(".form__group")?.querySelector(".form__error") || null;
+  }
 
-        if (!field.value.trim() || (field.type === "checkbox" && !field.checked)) {
-          field.setAttribute("aria-invalid", "true");
-          if (groupError) groupError.hidden = false;
-          valid = false;
-        } else {
-          field.setAttribute("aria-invalid", "false");
-          if (groupError) groupError.hidden = true;
-        }
-      });
+  function isFieldValid(field) {
+    if (field.type === "checkbox") {
+      return field.checked;
+    }
 
-      if (valid) {
-        const status = form.querySelector(".form__status");
-        if (status) {
-          status.hidden = false;
-          status.focus();
-        }
+    const value = field.value.trim();
+    if (!value) return false;
+
+    if (field.type === "url") {
+      try {
+        const parsed = new URL(value.startsWith("http") ? value : `https://${value}`);
+        return Boolean(parsed.hostname);
+      } catch {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  function validateForm(form) {
+    let valid = true;
+    const requiredFields = form.querySelectorAll("[required]");
+
+    requiredFields.forEach((field) => {
+      const errorEl = getFieldErrorElement(field);
+
+      if (!isFieldValid(field)) {
+        field.setAttribute("aria-invalid", "true");
+        if (errorEl) errorEl.hidden = false;
+        valid = false;
+      } else {
+        field.setAttribute("aria-invalid", "false");
+        if (errorEl) errorEl.hidden = true;
       }
     });
+
+    return valid;
   }
+
+  leadForms.forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      if (!validateForm(form)) return;
+
+      const status = form.querySelector(".form__status");
+      if (status) {
+        status.hidden = false;
+        status.focus();
+      }
+    });
+  });
 })();

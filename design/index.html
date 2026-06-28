@@ -24,6 +24,7 @@
           <li><a class="nav__link" href="#services">Услуги</a></li>
           <li><a class="nav__link" href="#process">Подход</a></li>
           <li><a class="nav__link" href="#faq">FAQ</a></li>
+          <li><a class="nav__link" href="#leads">Лид-магниты</a></li>
           <li><a class="nav__link" href="#contact">Контакты</a></li>
         </ul>
       </nav>
@@ -42,7 +43,7 @@
           </li>
         </ul>
         <a class="header__phone" href="tel:+79633151512">8 963 315 15 12</a>
-        <a class="btn btn--primary" href="#contact">Оставить заявку</a>
+        <a class="btn btn--primary" href="#leads">Оставить заявку</a>
       </div>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Открыть меню">
@@ -68,6 +69,7 @@
         </li>
         <li class="mobile-nav__item"><a class="mobile-nav__link" href="#process">Подход</a></li>
         <li class="mobile-nav__item"><a class="mobile-nav__link" href="#faq">FAQ</a></li>
+        <li class="mobile-nav__item"><a class="mobile-nav__link" href="#leads">Лид-магниты</a></li>
         <li class="mobile-nav__item"><a class="mobile-nav__link" href="#contact">Контакты</a></li>
       </ul>
       <a class="btn btn--primary" href="tel:+79633151512" style="width:100%">8 963 315 15 12</a>
@@ -86,27 +88,33 @@
             Настраиваем стабильный поток гостей, работаем по KPI и отчитываемся за каждый рубль бюджета.
           </p>
           <div class="hero__actions">
-            <a class="btn btn--primary" href="#contact">Оставить заявку</a>
-            <a class="btn btn--secondary" href="#about">Узнать больше</a>
+            <a class="btn btn--primary" href="#leads-audit">Аудит сайта</a>
+            <a class="btn btn--secondary" href="#leads-booking">Проверка бронирования</a>
           </div>
         </div>
 
-        <div class="stats" role="list" aria-label="Ключевые показатели">
-          <div class="stat-card" role="listitem">
-            <span class="stat-card__value">500+</span>
-            <span class="stat-card__label">проектов</span>
+        <div class="hero__visual">
+          <div class="hero__canvas-wrap" aria-hidden="true">
+            <canvas id="hero-canvas"></canvas>
           </div>
-          <div class="stat-card" role="listitem">
-            <span class="stat-card__value">+35%</span>
-            <span class="stat-card__label">рост конверсии</span>
-          </div>
-          <div class="stat-card" role="listitem">
-            <span class="stat-card__value">+20%</span>
-            <span class="stat-card__label">рост выручки</span>
-          </div>
-          <div class="stat-card" role="listitem">
-            <span class="stat-card__value">10</span>
-            <span class="stat-card__label">лет в маркетинге</span>
+
+          <div class="stats" role="list" aria-label="Ключевые показатели">
+            <div class="stat-card" role="listitem">
+              <span class="stat-card__value">500+</span>
+              <span class="stat-card__label">проектов</span>
+            </div>
+            <div class="stat-card" role="listitem">
+              <span class="stat-card__value">+35%</span>
+              <span class="stat-card__label">рост конверсии</span>
+            </div>
+            <div class="stat-card" role="listitem">
+              <span class="stat-card__value">+20%</span>
+              <span class="stat-card__label">рост выручки</span>
+            </div>
+            <div class="stat-card" role="listitem">
+              <span class="stat-card__value">10</span>
+              <span class="stat-card__label">лет в маркетинге</span>
+            </div>
           </div>
         </div>
       </div>
@@ -244,7 +252,7 @@
           <p class="cta-banner__text">
             Система — это порядок в действиях, а не одинаковые действия. Добиваемся результата, соблюдаем системность, находим потенциал в сложившихся условиях.
           </p>
-          <a class="btn btn--primary" href="#contact">Оставить заявку</a>
+          <a class="btn btn--primary" href="#leads">Оставить заявку</a>
         </div>
       </div>
     </section>
@@ -327,21 +335,136 @@
       </div>
     </section>
 
-    <!-- Contact -->
-    <section class="section" id="contact" aria-labelledby="contact-title">
+    <!-- Lead magnets -->
+    <section class="section" id="leads" aria-labelledby="leads-title">
       <div class="container">
         <header class="section__header">
-          <span class="section__eyebrow">Контакты</span>
-          <h2 class="section__title" id="contact-title">Бесплатный аудит</h2>
+          <span class="section__eyebrow">Бесплатная экспертиза</span>
+          <h2 class="section__title" id="leads-title">Выберите формат проверки</h2>
           <p class="section__lead">
-            Получите детальный аудит одного из digital-каналов и рекомендации по применению маркетинга в вашем ресторане.
+            Два быстрых способа получить рекомендации от MARS: аудит сайта или проверка бронирования и меню для ресторанов.
           </p>
         </header>
 
-        <div class="contact-grid">
+        <div class="lead-grid">
+          <article class="lead-card" id="leads-audit" aria-labelledby="lead-audit-title">
+            <div class="lead-card__header">
+              <span class="lead-card__badge" aria-hidden="true">01</span>
+              <h3 class="lead-card__title" id="lead-audit-title">Аудит сайта</h3>
+              <p class="lead-card__text">
+                Разберём UX, скорость, SEO и конверсию. Получите чек-лист улучшений для привлечения гостей онлайн.
+              </p>
+            </div>
+
+            <form class="form lead-form" data-lead="audit" novalidate aria-label="Форма заявки на аудит сайта">
+              <div class="form__group">
+                <label class="form__label form__label--required" for="audit-url">Адрес сайта</label>
+                <input class="form__input" type="url" id="audit-url" name="url" autocomplete="url" required inputmode="url" placeholder="https://restaurant.ru" aria-describedby="audit-url-error">
+                <span class="form__error" id="audit-url-error" hidden>Укажите корректный URL сайта</span>
+              </div>
+
+              <div class="form__group">
+                <label class="form__label form__label--required" for="audit-name">Вас зовут</label>
+                <input class="form__input" type="text" id="audit-name" name="name" autocomplete="name" required placeholder="Иван Иванов" aria-describedby="audit-name-error">
+                <span class="form__error" id="audit-name-error" hidden>Укажите ваше имя</span>
+              </div>
+
+              <div class="form__group">
+                <label class="form__label form__label--required" for="audit-phone">Телефон</label>
+                <input class="form__input" type="tel" id="audit-phone" name="phone" autocomplete="tel" required placeholder="+7 (___) ___-__-__" aria-describedby="audit-phone-error">
+                <span class="form__error" id="audit-phone-error" hidden>Укажите номер телефона</span>
+              </div>
+
+              <label class="form__checkbox">
+                <input type="checkbox" id="audit-consent" name="consent" required aria-describedby="audit-consent-error">
+                <span>Я согласен с <a href="#">политикой конфиденциальности</a></span>
+              </label>
+              <span class="form__error" id="audit-consent-error" hidden>Необходимо согласие на обработку данных</span>
+
+              <button class="btn btn--primary" type="submit">Получить аудит</button>
+
+              <p class="form__status" tabindex="-1" hidden role="status">
+                Заявка на аудит отправлена! Мы свяжемся с вами в ближайшее время.
+              </p>
+            </form>
+          </article>
+
+          <article class="lead-card lead-card--accent" id="leads-booking" aria-labelledby="lead-booking-title">
+            <div class="lead-card__header">
+              <span class="lead-card__badge" aria-hidden="true">02</span>
+              <h3 class="lead-card__title" id="lead-booking-title">Проверка бронирования и меню</h3>
+              <p class="lead-card__text">
+                Оценим путь гостя: бронирование столика, меню, доставку и агрегаторы. Покажем, где теряются заявки.
+              </p>
+            </div>
+
+            <form class="form lead-form" data-lead="booking" novalidate aria-label="Форма заявки на проверку бронирования и меню">
+              <div class="form__group">
+                <label class="form__label form__label--required" for="booking-restaurant">Название ресторана</label>
+                <input class="form__input" type="text" id="booking-restaurant" name="restaurant" autocomplete="organization" required placeholder="Название заведения" aria-describedby="booking-restaurant-error">
+                <span class="form__error" id="booking-restaurant-error" hidden>Укажите название ресторана</span>
+              </div>
+
+              <div class="form__group">
+                <label class="form__label form__label--required" for="booking-menu-url">Ссылка на меню или бронирование</label>
+                <input class="form__input" type="url" id="booking-menu-url" name="menu_url" autocomplete="url" required inputmode="url" placeholder="https://restaurant.ru/menu" aria-describedby="booking-menu-url-error">
+                <span class="form__error" id="booking-menu-url-error" hidden>Укажите ссылку на меню или бронирование</span>
+              </div>
+
+              <div class="form__group">
+                <label class="form__label form__label--required" for="booking-phone">Телефон</label>
+                <input class="form__input" type="tel" id="booking-phone" name="phone" autocomplete="tel" required placeholder="+7 (___) ___-__-__" aria-describedby="booking-phone-error">
+                <span class="form__error" id="booking-phone-error" hidden>Укажите номер телефона</span>
+              </div>
+
+              <fieldset class="form__fieldset">
+                <legend class="form__label">Что проверить в первую очередь</legend>
+                <label class="form__checkbox">
+                  <input type="checkbox" name="focus" value="booking">
+                  <span>Онлайн-бронирование</span>
+                </label>
+                <label class="form__checkbox">
+                  <input type="checkbox" name="focus" value="menu">
+                  <span>Меню и средний чек</span>
+                </label>
+                <label class="form__checkbox">
+                  <input type="checkbox" name="focus" value="delivery">
+                  <span>Доставка и агрегаторы</span>
+                </label>
+              </fieldset>
+
+              <label class="form__checkbox">
+                <input type="checkbox" id="booking-consent" name="consent" required aria-describedby="booking-consent-error">
+                <span>Я согласен с <a href="#">политикой конфиденциальности</a></span>
+              </label>
+              <span class="form__error" id="booking-consent-error" hidden>Необходимо согласие на обработку данных</span>
+
+              <button class="btn btn--primary" type="submit">Заказать проверку</button>
+
+              <p class="form__status" tabindex="-1" hidden role="status">
+                Заявка на проверку отправлена! Мы свяжемся с вами в ближайшее время.
+              </p>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section--muted" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__eyebrow">Контакты</span>
+          <h2 class="section__title" id="contact-title">Свяжитесь с нами</h2>
+          <p class="section__lead">
+            Предпочитаете живой разговор? Позвоните или напишите — подберём решение под ваш ресторан.
+          </p>
+        </header>
+
+        <div class="contact-grid contact-grid--info">
           <div class="audit-card">
             <h3 class="audit-card__title">Остались вопросы?</h3>
-            <p class="audit-card__text">Свяжитесь с нами — ответим и подберём решение под вашу задачу.</p>
+            <p class="audit-card__text">Ответим и подберём формат сотрудничества: консалтинг, продвижение или комплексный маркетинг.</p>
             <p>
               <strong>Телефон:</strong><br>
               <a href="tel:+79633151512">8 963 315 15 12</a>
@@ -350,33 +473,21 @@
               <strong>E-mail:</strong><br>
               <a href="mailto:info@mars-agency.pro">info@mars-agency.pro</a>
             </p>
+            <p>
+              <strong>Мессенджеры:</strong><br>
+              <a href="https://t.me/mars_agency_pro" target="_blank" rel="noopener noreferrer">Telegram</a>,
+              <a href="https://wa.me/79633151512" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            </p>
           </div>
 
-          <form class="form contact-form" novalidate aria-label="Форма заявки на бесплатный аудит">
-            <div class="form__group">
-              <label class="form__label form__label--required" for="name">Вас зовут</label>
-              <input class="form__input" type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-hint name-error" placeholder="Иван Иванов">
-              <span class="form__error" id="name-error" hidden>Укажите ваше имя</span>
+          <div class="contact-cta">
+            <h3 class="contact-cta__title">Нужна экспертиза?</h3>
+            <p class="contact-cta__text">Выберите бесплатный аудит сайта или проверку бронирования и меню — ответим в течение рабочего дня.</p>
+            <div class="contact-cta__actions">
+              <a class="btn btn--primary" href="#leads-audit">Аудит сайта</a>
+              <a class="btn btn--outline" href="#leads-booking">Проверка бронирования</a>
             </div>
-
-            <div class="form__group">
-              <label class="form__label form__label--required" for="phone">Телефон</label>
-              <input class="form__input" type="tel" id="phone" name="phone" autocomplete="tel" required aria-describedby="phone-error" placeholder="+7 (___) ___-__-__">
-              <span class="form__error" id="phone-error" hidden>Укажите номер телефона</span>
-            </div>
-
-            <label class="form__checkbox">
-              <input type="checkbox" name="consent" required aria-describedby="consent-error">
-              <span>Я согласен с <a href="#">политикой конфиденциальности</a></span>
-            </label>
-            <span class="form__error" id="consent-error" hidden>Необходимо согласие на обработку данных</span>
-
-            <button class="btn btn--primary" type="submit">Оставить заявку</button>
-
-            <p class="form__status" tabindex="-1" hidden role="status" style="color: var(--color-brand-red); font-weight: 600;">
-              Заявка отправлена! Мы свяжемся с вами в ближайшее время.
-            </p>
-          </form>
+          </div>
         </div>
       </div>
     </section>
@@ -405,6 +516,8 @@
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="js/hero-3d.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>
