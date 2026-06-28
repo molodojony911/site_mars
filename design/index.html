@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mars Agency — креативное агентство полного цикла: брендинг, digital и маркетинг.">
+  <title>Mars Agency — Креативное агентство</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+  <header class="header" role="banner">
+    <div class="container header__inner">
+      <a href="#" class="logo" aria-label="Mars Agency — на главную">
+        <span class="logo__mark" aria-hidden="true">M</span>
+        <span>Mars Agency</span>
+      </a>
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Открыть меню навигации"
+      >
+        <span class="nav-toggle__icon" aria-hidden="true"></span>
+      </button>
+
+      <nav id="site-nav" class="nav" aria-label="Основная навигация">
+        <a class="nav__link" href="#services" aria-current="page">Услуги</a>
+        <a class="nav__link" href="#work">Работы</a>
+        <a class="nav__link" href="#process">Процесс</a>
+        <a class="nav__link" href="#contact">Контакты</a>
+        <a class="nav__link nav__cta btn btn--primary" href="#contact">Обсудить проект</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="hero__badge">
+            <span class="hero__badge-dot" aria-hidden="true"></span>
+            Принимаем проекты на Q3 2026
+          </p>
+          <h1 id="hero-title" class="hero__title">
+            Запускаем бренды,<br>
+            которые <span class="hero__title-accent">запоминаются</span>
+          </h1>
+          <p class="hero__desc">
+            Mars Agency — креативное агентство полного цикла. Стратегия, визуальная идентичность
+            и digital-продукты для компаний, которые хотят выделиться на рынке.
+          </p>
+          <div class="btn-group">
+            <a class="btn btn--primary" href="#contact">Начать проект</a>
+            <a class="btn btn--secondary" href="#work">Смотреть кейсы</a>
+          </div>
+          <dl class="hero__stats">
+            <div>
+              <dt class="sr-only">Количество проектов</dt>
+              <dd class="hero__stat-value">120+</dd>
+              <dd class="hero__stat-label">проектов</dd>
+            </div>
+            <div>
+              <dt class="sr-only">Лет на рынке</dt>
+              <dd class="hero__stat-value">8</dd>
+              <dd class="hero__stat-label">лет опыта</dd>
+            </div>
+            <div>
+              <dt class="sr-only">Награды</dt>
+              <dd class="hero__stat-value">24</dd>
+              <dd class="hero__stat-label">награды</dd>
+            </div>
+          </dl>
+        </div>
+
+        <figure class="hero__visual" role="img" aria-label="Превью последнего кейса — ребрендинг технологического стартапа">
+          <div class="hero__visual-placeholder">
+            <svg class="hero__visual-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <rect x="8" y="12" width="48" height="40" rx="4" stroke="currentColor" stroke-width="2"/>
+              <circle cx="24" cy="28" r="6" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 44l14-14 10 10 24-24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>Hero visual — кейс / видео</span>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section" aria-labelledby="services-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__eyebrow">Услуги</span>
+          <h2 id="services-title" class="section__title">Всё для роста вашего бренда</h2>
+          <p class="section__lead">
+            От исследования аудитории до запуска рекламных кампаний — закрываем полный цикл
+            без потери качества на стыках.
+          </p>
+        </header>
+
+        <div class="services__grid">
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">◎</div>
+            <h3 class="card__title">Брендинг</h3>
+            <p class="card__desc">
+              Нейминг, айдентика, гайдлайны и tone of voice. Создаём систему, которая масштабируется
+              вместе с бизнесом.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">◈</div>
+            <h3 class="card__title">Digital-продукты</h3>
+            <p class="card__desc">
+              Сайты, лендинги и веб-приложения с фокусом на конверсию, скорость загрузки
+              и доступность.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">▣</div>
+            <h3 class="card__title">Маркетинг</h3>
+            <p class="card__desc">
+              Performance, контент-стратегия и SMM. Измеряем результат и оптимизируем
+              на основе данных.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">◇</div>
+            <h3 class="card__title">Стратегия</h3>
+            <p class="card__desc">
+              Аудит бренда, позиционирование и roadmap развития. Закладываем фундамент
+              до первого макета.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">◉</div>
+            <h3 class="card__title">Motion &amp; 3D</h3>
+            <p class="card__desc">
+              Анимация, видеопродакшн и 3D-визуализация для digital и офлайн-носителей.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">⬡</div>
+            <h3 class="card__title">Поддержка</h3>
+            <p class="card__desc">
+              Ретейнер на дизайн и маркетинг. Быстрые итерации, единая команда,
+              предсказуемый бюджет.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work -->
+    <section id="work" class="section" aria-labelledby="work-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__eyebrow">Портфолио</span>
+          <h2 id="work-title" class="section__title">Избранные проекты</h2>
+          <p class="section__lead">
+            Каждый кейс — это история о том, как стратегия и дизайн решают бизнес-задачу.
+          </p>
+        </header>
+
+        <div class="work__grid">
+          <a class="work-card" href="#">
+            <div class="work-card__image" role="img" aria-label="Превью проекта NovaTech">
+              [ Изображение кейса ]
+            </div>
+            <div class="work-card__body">
+              <span class="work-card__tag">Брендинг</span>
+              <h3 class="work-card__title">NovaTech — ребрендинг</h3>
+              <p class="work-card__desc">
+                Полный ребрендинг B2B SaaS: от позиционирования до запуска нового сайта.
+                +34% узнаваемости за 6 месяцев.
+              </p>
+            </div>
+          </a>
+
+          <a class="work-card" href="#">
+            <div class="work-card__image" role="img" aria-label="Превью проекта GreenLine">
+              [ Изображение кейса ]
+            </div>
+            <div class="work-card__body">
+              <span class="work-card__tag">Digital</span>
+              <h3 class="work-card__title">GreenLine — e-commerce</h3>
+              <p class="work-card__desc">
+                Интернет-магазин экотоваров с персонализацией и мобильным UX.
+                Конверсия выросла в 2.1 раза.
+              </p>
+            </div>
+          </a>
+
+          <a class="work-card" href="#">
+            <div class="work-card__image" role="img" aria-label="Превью проекта Atlas Bank">
+              [ Изображение кейса ]
+            </div>
+            <div class="work-card__body">
+              <span class="work-card__tag">Стратегия</span>
+              <h3 class="work-card__title">Atlas Bank — запуск продукта</h3>
+              <p class="work-card__desc">
+                Go-to-market стратегия и визуальная система для нового финтех-продукта.
+              </p>
+            </div>
+          </a>
+
+          <a class="work-card" href="#">
+            <div class="work-card__image" role="img" aria-label="Превью проекта Pulse Fitness">
+              [ Изображение кейса ]
+            </div>
+            <div class="work-card__body">
+              <span class="work-card__tag">Маркетинг</span>
+              <h3 class="work-card__title">Pulse Fitness — кампания</h3>
+              <p class="work-card__desc">
+                Интегрированная рекламная кампания: digital + офлайн. 1.2M охват за квартал.
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="section" aria-labelledby="process-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__eyebrow">Процесс</span>
+          <h2 id="process-title" class="section__title">Как мы работаем</h2>
+          <p class="section__lead">
+            Прозрачный процесс с чёткими этапами и согласованиями. Вы всегда знаете,
+            на каком этапе находится проект.
+          </p>
+        </header>
+
+        <ol class="process__steps">
+          <li class="process-step">
+            <h3 class="process-step__title">Discovery</h3>
+            <p class="process-step__desc">
+              Погружаемся в бизнес, аудиторию и конкурентов. Формируем brief и KPI проекта.
+            </p>
+          </li>
+          <li class="process-step">
+            <h3 class="process-step__title">Стратегия</h3>
+            <p class="process-step__desc">
+              Позиционирование, messaging и creative direction. Согласуем до начала дизайна.
+            </p>
+          </li>
+          <li class="process-step">
+            <h3 class="process-step__title">Дизайн</h3>
+            <p class="process-step__desc">
+              Концепции, итерации и финальная система. Еженедельные синки и доступ к Figma.
+            </p>
+          </li>
+          <li class="process-step">
+            <h3 class="process-step__title">Запуск</h3>
+            <p class="process-step__desc">
+              Production, QA и handoff. Передаём файлы, гайдлайны и поддерживаем после релиза.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="section" aria-labelledby="testimonial-title">
+      <div class="container">
+        <h2 id="testimonial-title" class="sr-only">Отзыв клиента</h2>
+        <blockquote class="testimonial">
+          <p class="testimonial__quote">
+            «Mars Agency не просто сделали красивый бренд — они помогли нам переосмыслить
+            продукт и выйти на новый рынок. Процесс был прозрачным, а результат превзошёл ожидания.»
+          </p>
+          <footer class="testimonial__author">
+            <div class="testimonial__avatar" aria-hidden="true">АК</div>
+            <div>
+              <cite class="testimonial__name">Анна Козлова</cite>
+              <p class="testimonial__role">CEO, NovaTech</p>
+            </div>
+          </footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- CTA / Contact -->
+    <section id="contact" class="section cta" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="cta__box">
+          <h2 id="contact-title" class="cta__title">Готовы обсудить проект?</h2>
+          <p class="cta__desc">
+            Расскажите о задаче — ответим в течение одного рабочего дня и предложим формат сотрудничества.
+          </p>
+
+          <form class="contact-form" action="#" method="post" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="name">Имя</label>
+              <input
+                class="form-input"
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Как к вам обращаться"
+                autocomplete="name"
+                required
+                aria-required="true"
+              >
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input
+                class="form-input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@company.com"
+                autocomplete="email"
+                required
+                aria-required="true"
+              >
+              <span class="form-hint" id="email-hint">Мы не передаём данные третьим лицам</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">О проекте</label>
+              <textarea
+                class="form-textarea"
+                id="message"
+                name="message"
+                placeholder="Кратко опишите задачу, сроки и бюджет"
+                rows="4"
+                required
+                aria-required="true"
+              ></textarea>
+            </div>
+
+            <button class="btn btn--primary" type="submit">Отправить заявку</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="#" class="logo" aria-label="Mars Agency — на главную">
+            <span class="logo__mark" aria-hidden="true">M</span>
+            <span>Mars Agency</span>
+          </a>
+          <p class="footer__brand-desc">
+            Креативное агентство полного цикла. Москва · удалённо по всему миру.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer__heading">Навигация</h3>
+          <ul class="footer__links">
+            <li><a class="footer__link" href="#services">Услуги</a></li>
+            <li><a class="footer__link" href="#work">Работы</a></li>
+            <li><a class="footer__link" href="#process">Процесс</a></li>
+            <li><a class="footer__link" href="#contact">Контакты</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__heading">Контакты</h3>
+          <ul class="footer__links">
+            <li><a class="footer__link" href="mailto:hello@mars.agency">hello@mars.agency</a></li>
+            <li><a class="footer__link" href="tel:+74951234567">+7 (495) 123-45-67</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 Mars Agency. Все права защищены.</p>
+        <div class="footer__social" aria-label="Социальные сети">
+          <a class="footer__social-link" href="#" aria-label="Telegram">TG</a>
+          <a class="footer__social-link" href="#" aria-label="Behance">Be</a>
+          <a class="footer__social-link" href="#" aria-label="LinkedIn">In</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="prototype-badge" role="status" aria-live="polite">Design prototype</div>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector('.nav-toggle');
+      var nav = document.getElementById('site-nav');
+
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', function () {
+        var isOpen = nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        toggle.setAttribute('aria-label', isOpen ? 'Закрыть меню навигации' : 'Открыть меню навигации');
+      });
+
+      nav.querySelectorAll('.nav__link').forEach(function (link) {
+        link.addEventListener('click', function () {
+          nav.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Открыть меню навигации');
+        });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+          nav.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

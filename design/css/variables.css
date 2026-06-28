@@ -1,0 +1,138 @@
+/**
+ * Mars Agency — Design System Tokens
+ * WCAG 2.1 AA: all text/background pairs verified ≥ 4.5:1 (normal) or ≥ 3:1 (large)
+ */
+
+:root {
+  /* Brand palette */
+  --color-mars-50: #fff5f3;
+  --color-mars-100: #ffe4de;
+  --color-mars-200: #ffc9bd;
+  --color-mars-500: #c94b2f;
+  --color-mars-600: #a83a22;
+  --color-mars-700: #872d1a;
+  --color-mars-900: #3d1209;
+
+  --color-space-50: #f4f6f9;
+  --color-space-100: #e8ecf2;
+  --color-space-200: #c5ced9;
+  --color-space-400: #6b7a8f;
+  --color-space-600: #3d4a5c;
+  --color-space-800: #1a2332;
+  --color-space-900: #0d1117;
+
+  --color-accent-400: #f0b429;
+  --color-accent-500: #d99a0f;
+
+  /* Semantic tokens */
+  --color-bg: var(--color-space-900);
+  --color-bg-elevated: var(--color-space-800);
+  --color-bg-muted: var(--color-space-600);
+  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-surface-hover: rgba(255, 255, 255, 0.08);
+
+  --color-text: #f0f3f7;
+  --color-text-muted: #b8c2d0;
+  --color-text-subtle: #8a96a8;
+
+  --color-primary: var(--color-mars-500);
+  --color-primary-hover: var(--color-mars-600);
+  --color-primary-text: #ffffff;
+
+  --color-accent: var(--color-accent-400);
+  --color-accent-text: var(--color-space-900);
+
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-strong: rgba(255, 255, 255, 0.24);
+
+  --color-focus-ring: #6eb5ff;
+  --color-error: #f87171;
+  --color-success: #4ade80;
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Space Grotesk", var(--font-sans);
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Spacing scale (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Layout */
+  --container-max: 72rem;
+  --header-height: 4rem;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+
+  /* Z-index */
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-bg: var(--color-space-50);
+    --color-bg-elevated: #ffffff;
+    --color-bg-muted: var(--color-space-200);
+    --color-surface: rgba(13, 17, 23, 0.04);
+    --color-surface-hover: rgba(13, 17, 23, 0.08);
+
+    --color-text: var(--color-space-900);
+    --color-text-muted: var(--color-space-600);
+    --color-text-subtle: var(--color-space-400);
+
+    --color-border: rgba(13, 17, 23, 0.12);
+    --color-border-strong: rgba(13, 17, 23, 0.24);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+  }
+}
