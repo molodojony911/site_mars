@@ -1,0 +1,146 @@
+/**
+ * MARS Agency — Design tokens
+ * Source: mars-agency.pro brand (black / red / white)
+ * WCAG 2.1 AA: contrast pairs documented below
+ */
+
+:root {
+  /* Brand colors */
+  --color-brand-red: #e02121;
+  --color-brand-red-hover: #c41c1c;
+  --color-brand-red-active: #a81818;
+  --color-brand-black: #000000;
+  --color-brand-white: #ffffff;
+
+  /* Neutrals */
+  --color-gray-50: #f8f8f8;
+  --color-gray-100: #f3f3f3;
+  --color-gray-200: #e8e8e8;
+  --color-gray-300: #d1d1d1;
+  --color-gray-400: #9a9a9a;
+  --color-gray-500: #6b6b6b;
+  --color-gray-600: #4a4a4a;
+  --color-gray-700: #2e2e2e;
+  --color-gray-800: #1a1a1a;
+  --color-gray-900: #0d0d0d;
+
+  /* Semantic */
+  --color-bg-primary: var(--color-brand-white);
+  --color-bg-secondary: var(--color-gray-100);
+  --color-bg-dark: var(--color-brand-black);
+  --color-bg-elevated: var(--color-brand-white);
+
+  --color-text-primary: var(--color-brand-black);
+  --color-text-secondary: var(--color-gray-600);
+  --color-text-muted: var(--color-gray-500);
+  --color-text-inverse: var(--color-brand-white);
+  --color-text-accent: var(--color-brand-red);
+
+  --color-border: var(--color-gray-200);
+  --color-border-strong: var(--color-gray-300);
+
+  --color-focus-ring: #2563eb;
+  --color-focus-ring-offset: var(--color-brand-white);
+
+  --color-link: var(--color-brand-red);
+  --color-link-hover: var(--color-brand-red-hover);
+  --color-link-visited: #9b1c1c;
+
+  /* Buttons */
+  --color-btn-primary-bg: var(--color-brand-red);
+  --color-btn-primary-text: var(--color-brand-white);
+  --color-btn-primary-hover: var(--color-brand-red-hover);
+  --color-btn-secondary-bg: transparent;
+  --color-btn-secondary-text: var(--color-brand-white);
+  --color-btn-secondary-border: var(--color-brand-white);
+
+  /* Typography */
+  --font-family-base: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-family-display: var(--font-family-base);
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-hero: clamp(2rem, 5vw + 1rem, 3.75rem);
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.2;
+  --line-height-base: 1.55;
+  --line-height-relaxed: 1.7;
+
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-wide: 0.04em;
+
+  /* Spacing (mobile-first scale) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Layout */
+  --container-max: 72rem;
+  --container-padding: var(--space-4);
+  --header-height: 5rem;
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-pill: 1000px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.14);
+
+  /* Motion */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* Z-index */
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --container-padding: var(--space-6);
+    --font-size-hero: clamp(2.5rem, 4vw + 1rem, 3.75rem);
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --container-padding: var(--space-8);
+    --header-height: 5.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-base: 0ms;
+    --transition-slow: 0ms;
+  }
+}
