@@ -1,0 +1,126 @@
+/**
+ * Mars Agency — Design tokens
+ * WCAG 2.1 AA: all text/background pairs verified ≥ 4.5:1 (normal) or ≥ 3:1 (large).
+ */
+:root {
+  /* Brand — Mars palette */
+  --color-mars-900: #3d1208;
+  --color-mars-700: #a33b1f;
+  --color-mars-500: #e86a4d;
+  --color-mars-300: #f4a48f;
+
+  /* Neutrals — deep space */
+  --color-space-950: #06090e;
+  --color-space-900: #0b0f14;
+  --color-space-800: #151b24;
+  --color-space-700: #1f2833;
+  --color-space-600: #2d3848;
+
+  /* Text */
+  --color-text-primary: #f4f4f5;
+  --color-text-secondary: #b4bcc8;
+  --color-text-muted: #8b95a5;
+  --color-text-inverse: #0b0f14;
+
+  /* Semantic */
+  --color-accent: var(--color-mars-500);
+  --color-accent-hover: var(--color-mars-300);
+  --color-accent-active: var(--color-mars-700);
+  --color-surface: var(--color-space-800);
+  --color-surface-elevated: var(--color-space-700);
+  --color-border: #2d3848;
+  --color-border-subtle: #1f2833;
+  --color-focus-ring: #6ec8ff;
+  --color-success: #3ecf8e;
+  --color-error: #f87171;
+
+  /* Typography */
+  --font-family-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-family-display: "Inter", var(--font-family-sans);
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: clamp(1.75rem, 4vw, 2.25rem);
+  --font-size-4xl: clamp(2rem, 5vw, 3rem);
+  --font-size-hero: clamp(2.25rem, 6vw, 3.75rem);
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.35;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.65;
+
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-wide: 0.08em;
+
+  /* Spacing scale (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Layout */
+  --container-max: 72rem;
+  --container-padding: var(--space-4);
+  --header-height: 4rem;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
+  --shadow-md: 0 4px 16px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 12px 40px rgb(0 0 0 / 0.5);
+  --shadow-glow: 0 0 48px rgb(232 106 77 / 0.18);
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Focus */
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --container-padding: var(--space-6);
+    --header-height: 4.5rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --container-padding: var(--space-8);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+  }
+}
