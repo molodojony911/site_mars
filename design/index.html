@@ -4,11 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="MARS — маркетинговое агентство для ресторанов. Стабильный поток гостей, работа по KPI, 10 лет опыта, 500+ проектов.">
+  <meta name="theme-color" content="#050508">
   <title>Маркетинговое агентство для ресторана | MARS</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <!-- Mission scroll progress -->
+  <div class="mission-progress" role="progressbar" aria-label="Прогресс прокрутки страницы" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="mission-progress__bar"></div>
+  </div>
+
+  <!-- Animated starfield -->
+  <canvas id="starfield" aria-hidden="true"></canvas>
 
   <!-- Header -->
   <header class="header" role="banner">
@@ -23,6 +32,7 @@
           <li><a class="nav__link" href="#about">Кто мы</a></li>
           <li><a class="nav__link" href="#services">Услуги</a></li>
           <li><a class="nav__link" href="#process">Подход</a></li>
+          <li><a class="nav__link" href="#roi">Калькулятор</a></li>
           <li><a class="nav__link" href="#faq">FAQ</a></li>
           <li><a class="nav__link" href="#contact">Контакты</a></li>
         </ul>
@@ -67,6 +77,7 @@
           </ul>
         </li>
         <li class="mobile-nav__item"><a class="mobile-nav__link" href="#process">Подход</a></li>
+        <li class="mobile-nav__item"><a class="mobile-nav__link" href="#roi">Калькулятор</a></li>
         <li class="mobile-nav__item"><a class="mobile-nav__link" href="#faq">FAQ</a></li>
         <li class="mobile-nav__item"><a class="mobile-nav__link" href="#contact">Контакты</a></li>
       </ul>
@@ -75,47 +86,66 @@
   </div>
 
   <main id="main">
-    <!-- Hero -->
+    <!-- Hero with 3D Mars -->
     <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg-glow" aria-hidden="true"></div>
+      <div class="dust-container" aria-hidden="true"></div>
+
       <div class="container hero__grid">
-        <div class="hero__content">
+        <div class="hero__content reveal">
+          <div class="hero__badge">
+            <span class="hero__badge-dot" aria-hidden="true"></span>
+            Mission Control · 10 лет в маркетинге
+          </div>
           <h1 class="hero__title" id="hero-title">
             Маркетинг для ресторанов <span>«под ключ»</span>
           </h1>
           <p class="hero__subtitle">
-            Настраиваем стабильный поток гостей, работаем по KPI и отчитываемся за каждый рубль бюджета.
+            Запускаем стабильный поток гостей, как миссию на Марс — по KPI, с точной навигацией и отчётностью за каждый рубль бюджета.
           </p>
           <div class="hero__actions">
             <a class="btn btn--primary" href="#contact">Оставить заявку</a>
             <a class="btn btn--secondary" href="#about">Узнать больше</a>
           </div>
+
+          <div class="stats" role="list" aria-label="Ключевые показатели миссии">
+            <div class="stat-card reveal reveal--delay-1" role="listitem">
+              <span class="stat-card__value" data-count="500" data-suffix="+">0+</span>
+              <span class="stat-card__label">проектов</span>
+              <span class="stat-card__tag">Orbit · T+10 лет</span>
+            </div>
+            <div class="stat-card reveal reveal--delay-2" role="listitem">
+              <span class="stat-card__value" data-count="35" data-suffix="%">0%</span>
+              <span class="stat-card__label">рост конверсии</span>
+              <span class="stat-card__tag">Signal · KPI</span>
+            </div>
+            <div class="stat-card reveal reveal--delay-3" role="listitem">
+              <span class="stat-card__value" data-count="20" data-suffix="%">0%</span>
+              <span class="stat-card__label">рост выручки</span>
+              <span class="stat-card__tag">Boost · Revenue</span>
+            </div>
+            <div class="stat-card reveal reveal--delay-4" role="listitem">
+              <span class="stat-card__value" data-count="10" data-suffix="">0</span>
+              <span class="stat-card__label">лет в маркетинге</span>
+              <span class="stat-card__tag">Crew · Experience</span>
+            </div>
+          </div>
         </div>
 
-        <div class="stats" role="list" aria-label="Ключевые показатели">
-          <div class="stat-card" role="listitem">
-            <span class="stat-card__value">500+</span>
-            <span class="stat-card__label">проектов</span>
+        <div class="hero__mars reveal">
+          <div class="hero__orbit" aria-hidden="true">
+            <span class="hero__orbit-dot"></span>
           </div>
-          <div class="stat-card" role="listitem">
-            <span class="stat-card__value">+35%</span>
-            <span class="stat-card__label">рост конверсии</span>
-          </div>
-          <div class="stat-card" role="listitem">
-            <span class="stat-card__value">+20%</span>
-            <span class="stat-card__label">рост выручки</span>
-          </div>
-          <div class="stat-card" role="listitem">
-            <span class="stat-card__value">10</span>
-            <span class="stat-card__label">лет в маркетинге</span>
-          </div>
+          <div class="hero__orbit hero__orbit--inner" aria-hidden="true"></div>
+          <canvas id="mars-canvas"></canvas>
         </div>
       </div>
     </section>
 
     <!-- About -->
-    <section class="section" id="about" aria-labelledby="about-title">
+    <section class="section section--light" id="about" aria-labelledby="about-title">
       <div class="container">
-        <header class="section__header">
+        <header class="section__header reveal">
           <span class="section__eyebrow">Кто мы</span>
           <h2 class="section__title" id="about-title">Мы мыслим цифрами, а не гипотезами</h2>
           <p class="section__lead">
@@ -124,7 +154,7 @@
         </header>
 
         <div class="about-content">
-          <div class="about-content__text">
+          <div class="about-content__text reveal">
             <p>
               MARS — команда профессиональных маркетологов, уверенно идущих в ногу с инновациями в сфере ресторанного маркетинга. Наш подход ориентирован на сотрудничество и постоянное обучение.
             </p>
@@ -134,44 +164,58 @@
           </div>
 
           <div class="pain-grid" role="list" aria-label="Проблемы, которые мы решаем">
-            <div class="pain-tag" role="listitem">Неработающий маркетинг</div>
-            <div class="pain-tag" role="listitem">Отсутствие прогноза</div>
-            <div class="pain-tag" role="listitem">Нехватка ресурсов</div>
-            <div class="pain-tag" role="listitem">Подготовка к открытию</div>
-            <div class="pain-tag" role="listitem">Низкая репутация</div>
-            <div class="pain-tag" role="listitem">Низкие KPI</div>
-            <div class="pain-tag" role="listitem">Затянутые сроки</div>
+            <div class="pain-tag reveal" role="listitem">Неработающий маркетинг</div>
+            <div class="pain-tag reveal reveal--delay-1" role="listitem">Отсутствие прогноза</div>
+            <div class="pain-tag reveal reveal--delay-2" role="listitem">Нехватка ресурсов</div>
+            <div class="pain-tag reveal" role="listitem">Подготовка к открытию</div>
+            <div class="pain-tag reveal reveal--delay-1" role="listitem">Низкая репутация</div>
+            <div class="pain-tag reveal reveal--delay-2" role="listitem">Низкие KPI</div>
+            <div class="pain-tag reveal reveal--delay-3" role="listitem">Затянутые сроки</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Process -->
+    <!-- Mission Process -->
     <section class="section section--muted" id="process" aria-labelledby="process-title">
       <div class="container">
-        <header class="section__header">
-          <span class="section__eyebrow">Какие задачи решаем</span>
+        <header class="section__header reveal">
+          <span class="section__eyebrow">Последовательность запуска</span>
           <h2 class="section__title" id="process-title">Системный подход к росту</h2>
           <p class="section__lead">
             Разбираем бизнес, цифры и текущий маркетинг — строим понятный план без хаотичных действий.
           </p>
         </header>
 
-        <div class="process-grid">
-          <article class="process-step">
-            <span class="process-step__number" aria-hidden="true">01</span>
-            <h3 class="process-step__title">Анализ</h3>
-            <p class="process-step__text">Разбираем бизнес, цифры и текущий маркетинг. Находим точки роста и блоки, мешающие движению к цели.</p>
+        <div class="mission-timeline">
+          <article class="mission-step reveal">
+            <div class="mission-step__header">
+              <span class="mission-step__number" aria-hidden="true">01</span>
+              <span class="mission-step__phase">Phase · Scan</span>
+            </div>
+            <h3 class="mission-step__title">Анализ</h3>
+            <p class="mission-step__text">Разбираем бизнес, цифры и текущий маркетинг. Находим точки роста и блоки, мешающие движению к цели.</p>
+            <div class="mission-step__progress" aria-hidden="true"><div class="mission-step__progress-bar"></div></div>
           </article>
-          <article class="process-step">
-            <span class="process-step__number" aria-hidden="true">02</span>
-            <h3 class="process-step__title">Стратегия</h3>
-            <p class="process-step__text">Строим понятный план роста без хаотичных действий. Прозрачные процессы и измеримые KPI.</p>
+
+          <article class="mission-step reveal reveal--delay-1">
+            <div class="mission-step__header">
+              <span class="mission-step__number" aria-hidden="true">02</span>
+              <span class="mission-step__phase">Phase · Plot</span>
+            </div>
+            <h3 class="mission-step__title">Стратегия</h3>
+            <p class="mission-step__text">Строим понятный план роста без хаотичных действий. Прозрачные процессы и измеримые KPI.</p>
+            <div class="mission-step__progress" aria-hidden="true"><div class="mission-step__progress-bar"></div></div>
           </article>
-          <article class="process-step">
-            <span class="process-step__number" aria-hidden="true">03</span>
-            <h3 class="process-step__title">Рост</h3>
-            <p class="process-step__text">Тестируем и масштабируем то, что приносит прибыль. Подбираем инструменты для лучшего результата.</p>
+
+          <article class="mission-step reveal reveal--delay-2">
+            <div class="mission-step__header">
+              <span class="mission-step__number" aria-hidden="true">03</span>
+              <span class="mission-step__phase">Phase · Launch</span>
+            </div>
+            <h3 class="mission-step__title">Рост</h3>
+            <p class="mission-step__text">Тестируем и масштабируем то, что приносит прибыль. Подбираем инструменты для лучшего результата.</p>
+            <div class="mission-step__progress" aria-hidden="true"><div class="mission-step__progress-bar"></div></div>
           </article>
         </div>
       </div>
@@ -180,8 +224,8 @@
     <!-- Services -->
     <section class="section" id="services" aria-labelledby="services-title">
       <div class="container">
-        <header class="section__header">
-          <span class="section__eyebrow">Наши услуги</span>
+        <header class="section__header reveal">
+          <span class="section__eyebrow">Модули миссии</span>
           <h2 class="section__title" id="services-title">С чем можем помочь</h2>
           <p class="section__lead">
             Комплексное использование маркетинговых инструментов для развития и сохранения качественной репутации на рынке.
@@ -189,7 +233,7 @@
         </header>
 
         <div class="services-grid">
-          <article class="service-card">
+          <article class="service-card reveal" tabindex="0">
             <div class="service-card__icon" aria-hidden="true">◎</div>
             <h3 class="service-card__title">Консалтинг</h3>
             <p class="service-card__text">Открытие нового ресторана с покрытием 360°. Найдём лучшие решения для старта вашего бизнеса.</p>
@@ -200,7 +244,7 @@
             </ul>
           </article>
 
-          <article class="service-card">
+          <article class="service-card reveal reveal--delay-1" tabindex="0">
             <div class="service-card__icon" aria-hidden="true">✦</div>
             <h3 class="service-card__title">Пиар</h3>
             <p class="service-card__text">Создадим безукоризненное восприятие бренда и сформируем лояльность гостей.</p>
@@ -211,7 +255,7 @@
             </ul>
           </article>
 
-          <article class="service-card">
+          <article class="service-card reveal reveal--delay-2" tabindex="0">
             <div class="service-card__icon" aria-hidden="true">↗</div>
             <h3 class="service-card__title">Продвижение и трафик</h3>
             <p class="service-card__text">Эффективное повышение трафика, ведущее к увеличению посещаемости и среднего чека.</p>
@@ -222,7 +266,7 @@
             </ul>
           </article>
 
-          <article class="service-card">
+          <article class="service-card reveal reveal--delay-3" tabindex="0">
             <div class="service-card__icon" aria-hidden="true">◈</div>
             <h3 class="service-card__title">Аналитика</h3>
             <p class="service-card__text">Задействуем инструменты для прозрачного анализа развития бизнеса.</p>
@@ -236,28 +280,69 @@
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="section section--muted" aria-labelledby="cta-title">
+    <!-- ROI Calculator -->
+    <section class="section section--muted" id="roi" aria-labelledby="roi-title">
       <div class="container">
-        <div class="cta-banner">
-          <h2 class="cta-banner__title" id="cta-title">Системный маркетинг — сейчас самое время</h2>
-          <p class="cta-banner__text">
-            Система — это порядок в действиях, а не одинаковые действия. Добиваемся результата, соблюдаем системность, находим потенциал в сложившихся условиях.
+        <div class="roi-calculator reveal">
+          <h2 class="roi-calculator__title" id="roi-title">Калькулятор роста</h2>
+          <p class="roi-calculator__lead">
+            Оцените потенциал вашего ресторана — потяните слайдеры и посмотрите прогноз роста с MARS.
           </p>
-          <a class="btn btn--primary" href="#contact">Оставить заявку</a>
+
+          <div class="roi-slider">
+            <label class="roi-slider__label" for="roi-revenue">
+              <span>Месячная выручка</span>
+              <span class="roi-slider__value" id="roi-revenue-value" aria-live="polite">3 000 000 ₽</span>
+            </label>
+            <input class="roi-slider__input" type="range" id="roi-revenue" min="500000" max="15000000" step="100000" value="3000000" aria-valuemin="500000" aria-valuemax="15000000" aria-valuenow="3000000">
+          </div>
+
+          <div class="roi-slider">
+            <label class="roi-slider__label" for="roi-guests">
+              <span>Средняя посещаемость</span>
+              <span class="roi-slider__value" id="roi-guests-value" aria-live="polite">80 чел/день</span>
+            </label>
+            <input class="roi-slider__input" type="range" id="roi-guests" min="20" max="300" step="10" value="80" aria-valuemin="20" aria-valuemax="300" aria-valuenow="80">
+          </div>
+
+          <div class="roi-result" role="group" aria-label="Прогнозируемые результаты">
+            <div class="roi-result__item">
+              <span class="roi-result__number" id="roi-growth" aria-live="polite">+21%</span>
+              <span class="roi-result__label">Рост выручки</span>
+            </div>
+            <div class="roi-result__item">
+              <span class="roi-result__number" id="roi-profit" aria-live="polite">220 500 ₽</span>
+              <span class="roi-result__label">Доп. прибыль / мес</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Partners -->
-    <section class="section" id="partners" aria-labelledby="partners-title">
+    <!-- CTA -->
+    <section class="section" aria-labelledby="cta-title">
       <div class="container">
-        <header class="section__header">
+        <div class="cta-banner reveal">
+          <h2 class="cta-banner__title" id="cta-title">Системный маркетинг — сейчас самое время</h2>
+          <p class="cta-banner__text">
+            Система — это порядок в действиях, а не одинаковые действия. Добиваемся результата, соблюдаем системность, находим потенциал в сложившихся условиях.
+          </p>
+          <a class="btn btn--mars" href="#contact">Запустить миссию</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners marquee -->
+    <section class="section section--muted" id="partners" aria-labelledby="partners-title">
+      <div class="container">
+        <header class="section__header reveal">
           <span class="section__eyebrow">Партнёры</span>
           <h2 class="section__title" id="partners-title">Нам доверяют</h2>
         </header>
+      </div>
 
-        <div class="partners-grid" role="list" aria-label="Логотипы партнёров">
+      <div class="partners-marquee" aria-label="Логотипы партнёров">
+        <div class="partners-track" role="list">
           <div class="partner-logo" role="listitem">Ресторан 1</div>
           <div class="partner-logo" role="listitem">Ресторан 2</div>
           <div class="partner-logo" role="listitem">Ресторан 3</div>
@@ -266,19 +351,28 @@
           <div class="partner-logo" role="listitem">Ресторан 6</div>
           <div class="partner-logo" role="listitem">Ресторан 7</div>
           <div class="partner-logo" role="listitem">Ресторан 8</div>
+          <!-- Duplicate for seamless loop -->
+          <div class="partner-logo" role="listitem" aria-hidden="true">Ресторан 1</div>
+          <div class="partner-logo" role="listitem" aria-hidden="true">Ресторан 2</div>
+          <div class="partner-logo" role="listitem" aria-hidden="true">Ресторан 3</div>
+          <div class="partner-logo" role="listitem" aria-hidden="true">Ресторан 4</div>
+          <div class="partner-logo" role="listitem" aria-hidden="true">Ресторан 5</div>
+          <div class="partner-logo" role="listitem" aria-hidden="true">Ресторан 6</div>
+          <div class="partner-logo" role="listitem" aria-hidden="true">Ресторан 7</div>
+          <div class="partner-logo" role="listitem" aria-hidden="true">Ресторан 8</div>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="section section--muted" id="faq" aria-labelledby="faq-title">
+    <section class="section" id="faq" aria-labelledby="faq-title">
       <div class="container">
-        <header class="section__header">
+        <header class="section__header reveal">
           <span class="section__eyebrow">Частые вопросы</span>
           <h2 class="section__title" id="faq-title">FAQ</h2>
         </header>
 
-        <ul class="faq-list">
+        <ul class="faq-list reveal">
           <li class="faq-item">
             <h3>
               <button class="faq-item__button" type="button" aria-expanded="false" aria-controls="faq-1" id="faq-btn-1">
@@ -328,9 +422,9 @@
     </section>
 
     <!-- Contact -->
-    <section class="section" id="contact" aria-labelledby="contact-title">
+    <section class="section section--muted" id="contact" aria-labelledby="contact-title">
       <div class="container">
-        <header class="section__header">
+        <header class="section__header reveal">
           <span class="section__eyebrow">Контакты</span>
           <h2 class="section__title" id="contact-title">Бесплатный аудит</h2>
           <p class="section__lead">
@@ -339,7 +433,7 @@
         </header>
 
         <div class="contact-grid">
-          <div class="audit-card">
+          <div class="audit-card reveal">
             <h3 class="audit-card__title">Остались вопросы?</h3>
             <p class="audit-card__text">Свяжитесь с нами — ответим и подберём решение под вашу задачу.</p>
             <p>
@@ -352,10 +446,10 @@
             </p>
           </div>
 
-          <form class="form contact-form" novalidate aria-label="Форма заявки на бесплатный аудит">
+          <form class="form contact-form reveal reveal--delay-1" novalidate aria-label="Форма заявки на бесплатный аудит">
             <div class="form__group">
               <label class="form__label form__label--required" for="name">Вас зовут</label>
-              <input class="form__input" type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-hint name-error" placeholder="Иван Иванов">
+              <input class="form__input" type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-error" placeholder="Иван Иванов">
               <span class="form__error" id="name-error" hidden>Укажите ваше имя</span>
             </div>
 
@@ -373,7 +467,7 @@
 
             <button class="btn btn--primary" type="submit">Оставить заявку</button>
 
-            <p class="form__status" tabindex="-1" hidden role="status" style="color: var(--color-brand-red); font-weight: 600;">
+            <p class="form__status" tabindex="-1" hidden role="status" style="color: var(--color-mars-glow); font-weight: 600;">
               Заявка отправлена! Мы свяжемся с вами в ближайшее время.
             </p>
           </form>
@@ -405,6 +499,8 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/mars-3d.js" defer></script>
 </body>
 </html>
