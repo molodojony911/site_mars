@@ -1,87 +1,85 @@
 /**
- * MARS Agency — Design tokens
- * Source: mars-agency.pro brand (black / red / white)
- * WCAG 2.1 AA: contrast pairs documented below
+ * ОПОРА — Local construction team design tokens
+ * Industrial grey + safety orange · Space Grotesk · WCAG 2.1 AA
  */
 
 :root {
-  /* Brand colors */
-  --color-brand-red: #e02121;
-  --color-brand-red-hover: #c41c1c;
-  --color-brand-red-active: #a81818;
-  --color-brand-black: #000000;
-  --color-brand-white: #ffffff;
+  /* ── Brand / industrial palette ─────────────────────────── */
+  --color-safety: #c2410c;
+  --color-safety-hover: #9a3412;
+  --color-safety-active: #7c2d12;
+  --color-safety-soft: #fff4ed;
+  --color-safety-mid: #ea580c;
 
-  /* Neutrals */
-  --color-gray-50: #f8f8f8;
-  --color-gray-100: #f3f3f3;
-  --color-gray-200: #e8e8e8;
-  --color-gray-300: #d1d1d1;
-  --color-gray-400: #9a9a9a;
-  --color-gray-500: #6b6b6b;
-  --color-gray-600: #4a4a4a;
-  --color-gray-700: #2e2e2e;
-  --color-gray-800: #1a1a1a;
-  --color-gray-900: #0d0d0d;
+  --color-steel-50: #f5f6f7;
+  --color-steel-100: #e8eaed;
+  --color-steel-200: #d0d4da;
+  --color-steel-300: #a8b0ba;
+  --color-steel-400: #7a8491;
+  --color-steel-500: #5c6672;
+  --color-steel-600: #454e59;
+  --color-steel-700: #323940;
+  --color-steel-800: #22272d;
+  --color-steel-900: #14171a;
 
-  /* Semantic */
-  --color-bg-primary: var(--color-brand-white);
-  --color-bg-secondary: var(--color-gray-100);
-  --color-bg-dark: var(--color-brand-black);
-  --color-bg-elevated: var(--color-brand-white);
+  --color-white: #ffffff;
+  --color-black: #0a0b0c;
 
-  --color-text-primary: var(--color-brand-black);
-  --color-text-secondary: var(--color-gray-600);
-  --color-text-muted: var(--color-gray-500);
-  --color-text-inverse: var(--color-brand-white);
-  --color-text-accent: var(--color-brand-red);
+  /* ── Semantic surfaces ──────────────────────────────────── */
+  --color-bg: var(--color-steel-50);
+  --color-bg-elevated: var(--color-white);
+  --color-bg-muted: var(--color-steel-100);
+  --color-bg-inverse: var(--color-steel-900);
+  --color-bg-hero-fallback: #1c2126;
 
-  --color-border: var(--color-gray-200);
-  --color-border-strong: var(--color-gray-300);
+  --color-text: var(--color-steel-900);
+  --color-text-secondary: var(--color-steel-600);
+  --color-text-muted: var(--color-steel-500);
+  --color-text-on-dark: var(--color-steel-50);
+  --color-text-on-dark-muted: var(--color-steel-300);
+  --color-text-on-accent: var(--color-white);
 
-  --color-focus-ring: #2563eb;
-  --color-focus-ring-offset: var(--color-brand-white);
+  --color-border: var(--color-steel-200);
+  --color-border-strong: var(--color-steel-400);
+  --color-accent: var(--color-safety);
+  --color-accent-hover: var(--color-safety-hover);
 
-  --color-link: var(--color-brand-red);
-  --color-link-hover: var(--color-brand-red-hover);
-  --color-link-visited: #9b1c1c;
+  /* Focus ring — distinct from brand orange (WCAG 2.4.7) */
+  --color-focus: #005fcc;
+  --color-error: #b42318;
+  --color-error-bg: #fef3f2;
+  --color-success: #067647;
 
-  /* Buttons */
-  --color-btn-primary-bg: var(--color-brand-red);
-  --color-btn-primary-text: var(--color-brand-white);
-  --color-btn-primary-hover: var(--color-brand-red-hover);
-  --color-btn-secondary-bg: transparent;
-  --color-btn-secondary-text: var(--color-brand-white);
-  --color-btn-secondary-border: var(--color-brand-white);
-
-  /* Typography */
-  --font-family-base: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-family-display: var(--font-family-base);
-
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 1.875rem;
-  --font-size-4xl: 2.25rem;
-  --font-size-5xl: 3rem;
-  --font-size-hero: clamp(2rem, 5vw + 1rem, 3.75rem);
-
-  --font-weight-normal: 400;
+  /* ── Typography ─────────────────────────────────────────── */
+  --font-family: "Space Grotesk", system-ui, sans-serif;
+  --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  --line-height-tight: 1.2;
-  --line-height-base: 1.55;
-  --line-height-relaxed: 1.7;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-hero: clamp(2.5rem, 8vw + 0.5rem, 5.5rem);
+  --text-display: clamp(1.75rem, 4vw + 0.5rem, 3rem);
 
-  --letter-spacing-tight: -0.02em;
-  --letter-spacing-wide: 0.04em;
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.7;
 
-  /* Spacing (mobile-first scale) */
+  --tracking-tight: -0.03em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.06em;
+  --tracking-wider: 0.12em;
+
+  /* ── Spacing (4px base) ─────────────────────────────────── */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -94,53 +92,43 @@
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
+  --space-32: 8rem;
 
-  /* Layout */
+  /* ── Layout ─────────────────────────────────────────────── */
   --container-max: 72rem;
-  --container-padding: var(--space-4);
-  --header-height: 5rem;
+  --container-narrow: 40rem;
+  --container-pad: clamp(1.25rem, 4vw, 2.5rem);
+  --header-height: 4rem;
+  --section-y: clamp(4rem, 10vw, 7.5rem);
 
-  /* Radius */
-  --radius-sm: 0.5rem;
-  --radius-md: 1rem;
-  --radius-lg: 1.5rem;
-  --radius-xl: 2rem;
-  --radius-pill: 1000px;
+  /* ── Radii — restrained (exaggerated minimalism) ────────── */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-none: 0;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.14);
+  /* ── Motion ─────────────────────────────────────────────── */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --duration-fast: 150ms;
+  --duration-base: 280ms;
+  --duration-slow: 600ms;
+  --duration-reveal: 900ms;
 
-  /* Motion */
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 400ms ease;
+  /* ── Shadows — almost none (minimalism) ─────────────────── */
+  --shadow-focus: 0 0 0 3px var(--color-focus);
+  --shadow-soft: 0 1px 0 rgba(20, 23, 26, 0.06);
 
-  /* Z-index */
+  /* ── Z-index ────────────────────────────────────────────── */
   --z-header: 100;
-  --z-overlay: 200;
-  --z-modal: 300;
+  --z-nav: 200;
+  --z-skip: 300;
 }
 
-@media (min-width: 48rem) {
-  :root {
-    --container-padding: var(--space-6);
-    --font-size-hero: clamp(2.5rem, 4vw + 1rem, 3.75rem);
-  }
-}
-
-@media (min-width: 64rem) {
-  :root {
-    --container-padding: var(--space-8);
-    --header-height: 5.5rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --transition-fast: 0ms;
-    --transition-base: 0ms;
-    --transition-slow: 0ms;
-  }
-}
+/*
+ * Contrast notes (WCAG 2.1 AA):
+ * - steel-900 #14171a on steel-50 #f5f6f7 ≈ 16:1
+ * - steel-600 #454e59 on white ≈ 7.8:1
+ * - white on safety #c2410c ≈ 5.1:1 (AA for normal text)
+ * - safety #c2410c on white ≈ 5.1:1 (links / accents)
+ * - steel-500 #5c6672 on white ≈ 5.4:1 (secondary, large OK; avoid small)
+ */
