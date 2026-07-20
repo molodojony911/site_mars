@@ -121,6 +121,43 @@
   --z-header: 100;
   --z-overlay: 200;
   --z-modal: 300;
+  --z-toast: 400;
+
+  /* ── Notifications (glassmorphism) ─────────────────────────
+   * Contrast targets: WCAG 2.1 AA (≥ 4.5:1 for normal text)
+   * Glass surfaces use semi-opaque fills so text remains readable
+   * over blurred backgrounds.
+   */
+  --color-notify-info: #1d4ed8;
+  --color-notify-info-bg: rgba(29, 78, 216, 0.14);
+  --color-notify-info-border: rgba(29, 78, 216, 0.35);
+
+  --color-notify-success: #15803d;
+  --color-notify-success-bg: rgba(21, 128, 61, 0.14);
+  --color-notify-success-border: rgba(21, 128, 61, 0.35);
+
+  --color-notify-warning: #a16207;
+  --color-notify-warning-bg: rgba(161, 98, 7, 0.16);
+  --color-notify-warning-border: rgba(161, 98, 7, 0.4);
+
+  --color-notify-error: var(--color-brand-red);
+  --color-notify-error-bg: rgba(224, 33, 33, 0.14);
+  --color-notify-error-border: rgba(224, 33, 33, 0.4);
+
+  --color-glass-bg: rgba(255, 255, 255, 0.72);
+  --color-glass-bg-strong: rgba(255, 255, 255, 0.88);
+  --color-glass-border: rgba(255, 255, 255, 0.55);
+  --color-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+  --color-glass-text: var(--color-gray-900);
+  --color-glass-text-secondary: var(--color-gray-700);
+
+  --glass-blur: 16px;
+  --glass-saturate: 1.35;
+
+  --toast-max-width: 26rem;
+  --toast-gap: var(--space-3);
+  --toast-offset-top: var(--space-4);
+  --toast-offset-inline: var(--space-4);
 }
 
 @media (min-width: 48rem) {

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Прототип системы уведомлений MARS в стиле glassmorphism. Тосты, баннеры, адаптивность, WCAG 2.1 AA.">
+  <title>Система уведомлений · MARS Design</title>
+  <link rel="stylesheet" href="css/notifications.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <div class="demo-page">
+    <div class="demo-page__bg" aria-hidden="true"></div>
+
+    <!-- Live region: top-of-viewport toast stack -->
+    <div
+      class="toast-region"
+      id="toast-region"
+      role="region"
+      aria-label="Уведомления"
+      aria-live="polite"
+      aria-relevant="additions text"
+    ></div>
+
+    <div class="demo-page__content">
+      <header class="demo-header">
+        <div class="container demo-header__inner">
+          <a class="demo-logo" href="index.html" aria-label="MARS — на лендинг">
+            <span class="demo-logo__mark" aria-hidden="true">M</span>
+            <span>MARS</span>
+          </a>
+          <nav class="demo-header__nav" aria-label="Дизайн-прототипы">
+            <a class="demo-header__link" href="index.html">Лендинг</a>
+            <a class="demo-header__link" href="notifications.html" aria-current="page">Уведомления</a>
+            <a class="demo-header__link" href="../docs/design.md">Документация</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="main">
+        <section class="demo-hero" aria-labelledby="hero-title">
+          <div class="container">
+            <span class="demo-hero__eyebrow">Design system · Notifications</span>
+            <h1 class="demo-hero__title" id="hero-title">Glassmorphism-уведомления</h1>
+            <p class="demo-hero__lead">
+              Тосты в верхней части экрана и page-level баннеры на палитре и типографике MARS.
+              Плавные появления, стек, dismiss и автоскрытие — с учётом WCAG 2.1 AA.
+            </p>
+
+            <!-- Static banner examples (page-level, top of content) -->
+            <div class="banner-stack" aria-label="Примеры баннеров">
+              <aside class="banner banner--info" role="status">
+                <div class="banner__row">
+                  <div class="banner__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="9"/>
+                      <path d="M12 8v4M12 16h.01"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 class="banner__title">Системное обновление</h2>
+                    <p class="banner__text">Сегодня с 23:00 до 23:30 возможны краткие перерывы в доступе к кабинету.</p>
+                  </div>
+                  <div class="banner__actions">
+                    <button class="toast__action toast__action--primary" type="button" data-demo="info">Подробнее</button>
+                    <button class="toast__action" type="button" data-dismiss-banner>Скрыть</button>
+                  </div>
+                </div>
+              </aside>
+
+              <aside class="banner banner--success" role="status" hidden data-demo-banner="success">
+                <div class="banner__row">
+                  <div class="banner__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="9"/>
+                      <path d="M8 12l3 3 5-6"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 class="banner__title">Заявка отправлена</h2>
+                    <p class="banner__text">Мы свяжемся с вами в течение рабочего дня.</p>
+                  </div>
+                  <div class="banner__actions">
+                    <button class="toast__action" type="button" data-dismiss-banner>Закрыть</button>
+                  </div>
+                </div>
+              </aside>
+            </div>
+
+            <div class="playground">
+              <h2 class="playground__title">Песочница тостов</h2>
+              <p class="playground__hint">
+                Уведомления появляются сверху. На мобильном — на всю ширину с отступами, с tablet — справа.
+                Наведите курсор, чтобы поставить автоскрытие на паузу.
+              </p>
+              <div class="playground__grid">
+                <button class="btn btn--info" type="button" data-toast="info">Info</button>
+                <button class="btn btn--success" type="button" data-toast="success">Success</button>
+                <button class="btn btn--warning" type="button" data-toast="warning">Warning</button>
+                <button class="btn btn--error" type="button" data-toast="error">Error</button>
+                <button class="btn btn--primary" type="button" data-toast="action">С действием</button>
+                <button class="btn btn--ghost" type="button" data-toast="stack">Стек из 3</button>
+              </div>
+            </div>
+
+            <ul class="specs">
+              <li class="spec-card">
+                <span class="spec-card__label">Позиция</span>
+                <p class="spec-card__text">Фиксированный стек у верхнего края viewport. Mobile: full-bleed с gutter. Desktop: правый верх.</p>
+              </li>
+              <li class="spec-card">
+                <span class="spec-card__label">Движение</span>
+                <p class="spec-card__text">Fade + slide-down 250ms. Progress-bar автоскрытия. Уважение prefers-reduced-motion.</p>
+              </li>
+              <li class="spec-card">
+                <span class="spec-card__label">A11y</span>
+                <p class="spec-card__text">aria-live, role=status/alert, focus-visible, контраст ≥ 4.5:1 на glass-поверхности.</p>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/notifications.js" defer></script>
+</body>
+</html>
