@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Прототип интерфейса интеграции API Dadata: автоподсказки, автозаполнение и визуализация ответа.">
+  <title>Dadata — автоматизация ввода данных</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <header class="header" role="banner">
+    <div class="container header__inner">
+      <a class="logo" href="../index.html" aria-label="ОПОРА Design System — к лендингу">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">
+          <span class="logo__name">ОПОРА</span>
+          <span class="logo__sub">Dadata UI</span>
+        </span>
+      </a>
+
+      <div class="header__meta">
+        <span class="status-pill" title="Статус подключения (мок)">
+          <span class="status-pill__dot" aria-hidden="true"></span>
+          API online · mock
+        </span>
+        <a class="btn btn--ghost btn--sm" href="../../docs/design.md">Design docs</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <div class="container">
+      <header class="page__intro">
+        <p class="page__eyebrow">Интеграция API</p>
+        <h1 class="page__title">Dadata: ввод без ручной рутины</h1>
+        <p class="page__lead">
+          Подсказки по мере набора, автозаполнение связанных полей и прозрачная визуализация ответа API.
+        </p>
+      </header>
+
+      <div
+        class="modes"
+        role="tablist"
+        aria-label="Тип подсказки Dadata"
+      >
+        <button class="mode-tab" role="tab" id="tab-address" aria-selected="true" aria-controls="panel-form" data-mode="address" type="button">
+          Адрес
+        </button>
+        <button class="mode-tab" role="tab" id="tab-party" aria-selected="false" aria-controls="panel-form" data-mode="party" type="button">
+          Организация
+        </button>
+        <button class="mode-tab" role="tab" id="tab-bank" aria-selected="false" aria-controls="panel-form" data-mode="bank" type="button">
+          Банк
+        </button>
+        <button class="mode-tab" role="tab" id="tab-fio" aria-selected="false" aria-controls="panel-form" data-mode="fio" type="button">
+          ФИО
+        </button>
+      </div>
+
+      <ol class="flow glass" aria-label="Сценарий автоматизации" id="flow-steps">
+        <li class="flow__step is-active" data-step="1">
+          <span class="flow__num">01</span>
+          <span class="flow__label">Ввод</span>
+        </li>
+        <li class="flow__step" data-step="2">
+          <span class="flow__num">02</span>
+          <span class="flow__label">Подсказка</span>
+        </li>
+        <li class="flow__step" data-step="3">
+          <span class="flow__num">03</span>
+          <span class="flow__label">Автозаполнение</span>
+        </li>
+        <li class="flow__step" data-step="4">
+          <span class="flow__num">04</span>
+          <span class="flow__label">Результат API</span>
+        </li>
+      </ol>
+
+      <div class="workspace">
+        <!-- Input panel -->
+        <section class="panel glass glass--strong" id="panel-form" role="tabpanel" aria-labelledby="tab-address">
+          <div class="panel__header">
+            <h2 class="panel__title" id="form-title">Адрес</h2>
+            <p class="panel__hint" id="form-hint">Suggest → разбор по КЛАДР / ФИАС</p>
+          </div>
+
+          <form id="dadata-form" novalidate aria-label="Форма с автоподсказками Dadata">
+            <!-- Address mode -->
+            <div class="mode-fields" data-fields="address">
+              <div class="field">
+                <div class="field__label-row">
+                  <label class="field__label" for="query-address">Адрес или индекс</label>
+                  <span class="field__badge">suggest</span>
+                </div>
+                <div class="field__control" id="control-address">
+                  <input
+                    class="field__input"
+                    type="text"
+                    id="query-address"
+                    name="address"
+                    autocomplete="off"
+                    aria-autocomplete="list"
+                    aria-controls="suggest-address"
+                    aria-expanded="false"
+                    aria-describedby="help-address"
+                    placeholder="Начните вводить: Москва, Тверская…"
+                  >
+                  <span class="field__spinner" aria-hidden="true"></span>
+                  <ul
+                    class="suggest"
+                    id="suggest-address"
+                    role="listbox"
+                    aria-label="Подсказки адреса"
+                    hidden
+                  ></ul>
+                </div>
+                <p class="field__help" id="help-address">Стрелки ↑↓, Enter — выбрать, Esc — закрыть</p>
+              </div>
+
+              <div class="field-grid">
+                <div class="field">
+                  <label class="field__label" for="postal-code">Индекс</label>
+                  <input class="field__input" type="text" id="postal-code" name="postal_code" readonly>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="region">Регион</label>
+                  <input class="field__input" type="text" id="region" name="region" readonly>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="city">Город</label>
+                  <input class="field__input" type="text" id="city" name="city" readonly>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="street">Улица, дом</label>
+                  <input class="field__input" type="text" id="street" name="street" readonly>
+                </div>
+              </div>
+            </div>
+
+            <!-- Party mode -->
+            <div class="mode-fields" data-fields="party" hidden>
+              <div class="field">
+                <div class="field__label-row">
+                  <label class="field__label" for="query-party">ИНН, ОГРН или название</label>
+                  <span class="field__badge">party</span>
+                </div>
+                <div class="field__control" id="control-party">
+                  <input
+                    class="field__input"
+                    type="text"
+                    id="query-party"
+                    name="party"
+                    autocomplete="off"
+                    aria-autocomplete="list"
+                    aria-controls="suggest-party"
+                    aria-expanded="false"
+                    aria-describedby="help-party"
+                    placeholder="ООО «Пример» или 7707083893"
+                  >
+                  <span class="field__spinner" aria-hidden="true"></span>
+                  <ul class="suggest" id="suggest-party" role="listbox" aria-label="Подсказки организаций" hidden></ul>
+                </div>
+                <p class="field__help" id="help-party">Поиск по названию, ИНН или ОГРН</p>
+              </div>
+
+              <div class="field-grid">
+                <div class="field">
+                  <label class="field__label" for="inn">ИНН</label>
+                  <input class="field__input" type="text" id="inn" name="inn" readonly>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="ogrn">ОГРН</label>
+                  <input class="field__input" type="text" id="ogrn" name="ogrn" readonly>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="legal-name">Краткое название</label>
+                  <input class="field__input" type="text" id="legal-name" name="legal_name" readonly>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="legal-address">Юр. адрес</label>
+                  <input class="field__input" type="text" id="legal-address" name="legal_address" readonly>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bank mode -->
+            <div class="mode-fields" data-fields="bank" hidden>
+              <div class="field">
+                <div class="field__label-row">
+                  <label class="field__label" for="query-bank">БИК или название банка</label>
+                  <span class="field__badge">bank</span>
+                </div>
+                <div class="field__control" id="control-bank">
+                  <input
+                    class="field__input"
+                    type="text"
+                    id="query-bank"
+                    name="bank"
+                    autocomplete="off"
+                    aria-autocomplete="list"
+                    aria-controls="suggest-bank"
+                    aria-expanded="false"
+                    placeholder="044525225 или Сбербанк"
+                  >
+                  <span class="field__spinner" aria-hidden="true"></span>
+                  <ul class="suggest" id="suggest-bank" role="listbox" aria-label="Подсказки банков" hidden></ul>
+                </div>
+              </div>
+
+              <div class="field-grid">
+                <div class="field">
+                  <label class="field__label" for="bic">БИК</label>
+                  <input class="field__input" type="text" id="bic" name="bic" readonly>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="swift">SWIFT</label>
+                  <input class="field__input" type="text" id="swift" name="swift" readonly>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="bank-name">Банк</label>
+                  <input class="field__input" type="text" id="bank-name" name="bank_name" readonly>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="corr-account">Корр. счёт</label>
+                  <input class="field__input" type="text" id="corr-account" name="corr_account" readonly>
+                </div>
+              </div>
+            </div>
+
+            <!-- FIO mode -->
+            <div class="mode-fields" data-fields="fio" hidden>
+              <div class="field">
+                <div class="field__label-row">
+                  <label class="field__label" for="query-fio">ФИО</label>
+                  <span class="field__badge">fio</span>
+                </div>
+                <div class="field__control" id="control-fio">
+                  <input
+                    class="field__input"
+                    type="text"
+                    id="query-fio"
+                    name="fio"
+                    autocomplete="off"
+                    aria-autocomplete="list"
+                    aria-controls="suggest-fio"
+                    aria-expanded="false"
+                    placeholder="Иванов Иван Иванович"
+                  >
+                  <span class="field__spinner" aria-hidden="true"></span>
+                  <ul class="suggest" id="suggest-fio" role="listbox" aria-label="Подсказки ФИО" hidden></ul>
+                </div>
+              </div>
+
+              <div class="field-grid">
+                <div class="field">
+                  <label class="field__label" for="surname">Фамилия</label>
+                  <input class="field__input" type="text" id="surname" name="surname" readonly>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="name">Имя</label>
+                  <input class="field__input" type="text" id="name" name="name" readonly>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="patronymic">Отчество</label>
+                  <input class="field__input" type="text" id="patronymic" name="patronymic" readonly>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="gender">Пол</label>
+                  <input class="field__input" type="text" id="gender" name="gender" readonly>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn btn--primary" type="submit" id="btn-apply">Применить подсказку</button>
+              <button class="btn btn--ghost" type="reset" id="btn-reset">Очистить</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Results panel -->
+        <aside class="panel panel--results glass" aria-labelledby="results-title">
+          <div class="panel__header">
+            <h2 class="panel__title" id="results-title">Ответ API</h2>
+            <p class="panel__hint">Структура · качество · сырой JSON</p>
+          </div>
+
+          <div class="result-empty" id="result-empty">
+            <div class="result-empty__icon" aria-hidden="true">⟨⟩</div>
+            <p class="result-empty__title">Пока пусто</p>
+            <p class="result-empty__text">
+              Выберите подсказку слева — здесь появится разобранный ответ и оценка качества.
+            </p>
+          </div>
+
+          <div class="result" id="result-panel" hidden>
+            <div class="result__summary">
+              <p class="result__value" id="result-value">—</p>
+              <div class="result__meta" id="result-meta" aria-live="polite"></div>
+            </div>
+
+            <div class="confidence" aria-label="Уверенность распознавания">
+              <div class="confidence__label">
+                <span>Уверенность</span>
+                <span id="confidence-pct">0%</span>
+              </div>
+              <div class="confidence__track" role="presentation">
+                <div class="confidence__fill" id="confidence-fill"></div>
+              </div>
+            </div>
+
+            <dl class="kv-list" id="result-kv"></dl>
+
+            <div class="raw">
+              <button
+                class="raw__toggle"
+                type="button"
+                id="raw-toggle"
+                aria-expanded="false"
+                aria-controls="raw-panel"
+              >
+                <svg class="raw__toggle-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M6 3l5 5-5 5"/>
+                </svg>
+                Показать JSON
+              </button>
+              <div class="raw__panel" id="raw-panel" hidden>
+                <pre class="raw__code" id="raw-code" tabindex="0"></pre>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <p>Прототип UI · design system ОПОРА + glassmorphism · mock Dadata</p>
+      <p>
+        <a href="../index.html">Лендинг ОПОРА</a>
+        ·
+        <a href="../../docs/design.md">docs/design.md</a>
+      </p>
+    </div>
+  </footer>
+
+  <div class="live-status" id="live-status" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
