@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="UX-прототип Telegram-бота FraudScore — антифрод-скоринг телефонных номеров.">
+  <title>FraudScore — Telegram Bot UX Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Telegram dark theme */
+      --tg-bg: #0E1621;
+      --tg-bg-elevated: #17212B;
+      --tg-bubble-bot: #182533;
+      --tg-bubble-user: #2B5278;
+      --tg-text: #F8FAFC;
+      --tg-muted: #7A8A99;
+      --tg-link: #5EA9DD;
+      --tg-header: #17212B;
+      --tg-border: rgba(122, 138, 153, 0.22);
+
+      /* Status */
+      --status-green: #22C55E;
+      --status-amber: #F59E0B;
+      --status-red: #EF4444;
+
+      /* Page chrome (outside chat) */
+      --page-bg: #0A1018;
+      --page-text: #E2E8F0;
+      --page-muted: #94A3B8;
+      --accent: #5EA9DD;
+      --screen-label: #94A3B8;
+
+      /* Layout */
+      --chat-width: 420px;
+      --radius-bubble: 12px;
+      --radius-btn: 8px;
+      --touch-min: 44px;
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 12px;
+      --space-lg: 16px;
+      --space-xl: 24px;
+
+      --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.45;
+      color: var(--page-text);
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(43, 82, 120, 0.35), transparent 55%),
+        var(--page-bg);
+      min-height: 100vh;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 100;
+      padding: 12px 16px;
+      background: var(--accent);
+      color: #0A1018;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      left: 12px;
+      top: 12px;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-md) 64px;
+    }
+
+    .page__header {
+      margin-bottom: var(--space-xl);
+      text-align: center;
+    }
+
+    .page__eyebrow {
+      margin: 0 0 var(--space-sm);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--page-muted);
+    }
+
+    .page__title {
+      margin: 0 0 var(--space-sm);
+      font-size: clamp(1.5rem, 4vw, 1.85rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--page-text);
+    }
+
+    .page__lead {
+      margin: 0 auto;
+      max-width: 36em;
+      color: var(--page-muted);
+      font-size: 0.95rem;
+    }
+
+    .toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin: var(--space-xl) 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .toc a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--tg-border);
+      background: rgba(23, 33, 43, 0.7);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 13px;
+    }
+    .toc a:hover,
+    .toc a:focus-visible {
+      background: rgba(94, 169, 221, 0.15);
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* —— Screen card —— */
+    .screen {
+      margin-bottom: 40px;
+    }
+
+    .screen__label {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 0 0 12px;
+      padding: 0 4px;
+    }
+
+    .screen__num {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .screen__title {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--page-text);
+    }
+
+    .screen__note {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: var(--page-muted);
+    }
+
+    /* —— Phone / chat frame —— */
+    .phone {
+      width: 100%;
+      max-width: var(--chat-width);
+      margin: 0 auto;
+      background: var(--tg-bg);
+      border: 1px solid var(--tg-border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.03),
+        0 24px 48px rgba(0, 0, 0, 0.45);
+    }
+
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      background: var(--tg-header);
+      border-bottom: 1px solid var(--tg-border);
+    }
+
+    .chat-header__back {
+      color: var(--tg-link);
+      font-size: 22px;
+      line-height: 1;
+      width: 28px;
+      text-align: center;
+      user-select: none;
+    }
+
+    .chat-header__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #2B5278, #1a334d);
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .chat-header__meta {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .chat-header__name {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--tg-text);
+    }
+
+    .chat-header__status {
+      margin: 2px 0 0;
+      font-size: 13px;
+      color: var(--tg-muted);
+    }
+
+    .chat {
+      padding: 14px 10px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 120px;
+    }
+
+    /* —— Bubbles —— */
+    .row {
+      display: flex;
+      flex-direction: column;
+      max-width: 92%;
+    }
+    .row--bot { align-self: flex-start; align-items: flex-start; }
+    .row--user { align-self: flex-end; align-items: flex-end; }
+
+    .bubble {
+      position: relative;
+      padding: 10px 12px;
+      border-radius: var(--radius-bubble);
+      color: var(--tg-text);
+      word-wrap: break-word;
+    }
+
+    .bubble--bot {
+      background: var(--tg-bubble-bot);
+      border-bottom-left-radius: 4px;
+    }
+
+    .bubble--user {
+      background: var(--tg-bubble-user);
+      border-bottom-right-radius: 4px;
+    }
+
+    .bubble__text {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    .bubble__text + .bubble__text,
+    .bubble__text + .legend,
+    .bubble__text + .risk-list,
+    .bubble__text + .code-preview,
+    .bubble__text + .progress,
+    .bubble__text + .status-line,
+    .bubble__text + .attach-hint {
+      margin-top: 10px;
+    }
+
+    .bubble__time {
+      display: block;
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--tg-muted);
+      text-align: right;
+    }
+
+    .bubble p { margin: 0; }
+    .bubble p + p { margin-top: 8px; }
+
+    .bubble strong { font-weight: 600; }
+
+    /* —— File attachment bubble —— */
+    .file-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 220px;
+    }
+
+    .file-card__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(94, 169, 221, 0.18);
+      color: var(--tg-link);
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .file-card__name {
+      margin: 0;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--tg-text);
+    }
+
+    .file-card__meta {
+      margin: 2px 0 0;
+      font-size: 12px;
+      color: var(--tg-muted);
+    }
+
+    .bubble--bot .file-card__icon {
+      background: rgba(94, 169, 221, 0.12);
+    }
+
+    /* —— Monospace CSV preview —— */
+    .code-preview {
+      margin: 10px 0 0;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid var(--tg-border);
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: #E2E8F0;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    .format-list {
+      margin: 10px 0 0;
+      padding-left: 1.15em;
+      color: var(--tg-text);
+    }
+    .format-list li { margin-bottom: 4px; }
+    .format-list li::marker { color: var(--tg-muted); }
+
+    /* —— Inline keyboard —— */
+    .keyboard {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+      margin-top: 6px;
+    }
+
+    .keyboard__row {
+      display: flex;
+      gap: 6px;
+      width: 100%;
+    }
+
+    .btn-inline {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: var(--touch-min);
+      padding: 10px 12px;
+      border: none;
+      border-radius: var(--radius-btn);
+      background: rgba(23, 33, 43, 0.92);
+      color: var(--tg-link);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+      cursor: default;
+      box-shadow: inset 0 0 0 1px rgba(94, 169, 221, 0.12);
+      transition: background 0.15s ease;
+    }
+
+    .btn-inline:hover,
+    .btn-inline:focus-visible {
+      background: rgba(94, 169, 221, 0.14);
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+
+    .btn-inline--danger {
+      color: #F87171;
+      box-shadow: inset 0 0 0 1px rgba(239, 68, 68, 0.2);
+    }
+
+    /* —— Progress —— */
+    .progress {
+      margin-top: 10px;
+    }
+
+    .progress__meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 13px;
+      color: var(--tg-muted);
+    }
+
+    .progress__meta strong {
+      color: var(--tg-text);
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .progress__track {
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(122, 138, 153, 0.28);
+      overflow: hidden;
+    }
+
+    .progress__fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #3B82F6, var(--status-green));
+      transition: width 0.3s ease;
+    }
+
+    .progress__fill--done {
+      background: var(--status-green);
+    }
+
+    .status-line {
+      margin-top: 10px;
+      font-size: 13.5px;
+      font-variant-numeric: tabular-nums;
+      color: var(--tg-text);
+    }
+
+    .stage {
+      padding-top: 4px;
+    }
+
+    .stage + .stage {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--tg-border);
+    }
+
+    .stage__label {
+      margin: 0 0 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--tg-muted);
+    }
+
+    /* —— Legend / risk summary —— */
+    .legend {
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .legend__item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2px 10px;
+      align-items: baseline;
+    }
+
+    .legend__badge {
+      font-size: 13px;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .legend__hint {
+      grid-column: 2;
+      font-size: 12.5px;
+      color: var(--tg-muted);
+    }
+
+    .text-green { color: var(--status-green); }
+    .text-amber { color: var(--status-amber); }
+    .text-red { color: var(--status-red); }
+
+    /* —— High-risk number cards —— */
+    .risk-list {
+      margin: 10px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .risk-card {
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.28);
+    }
+
+    .risk-card__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .risk-card__phone {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--tg-text);
+      letter-spacing: 0.01em;
+    }
+
+    .risk-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: rgba(239, 68, 68, 0.2);
+      color: #FCA5A5;
+      font-size: 12px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .risk-card__signals {
+      margin: 0;
+      padding-left: 1.1em;
+      font-size: 12.5px;
+      color: #E2E8F0;
+    }
+
+    .risk-card__signals li {
+      margin-bottom: 2px;
+    }
+    .risk-card__signals li::marker {
+      color: #F87171;
+    }
+
+    .attach-hint {
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--tg-text);
+    }
+
+    .privacy-list {
+      margin: 10px 0 0;
+      padding-left: 1.15em;
+      color: var(--tg-text);
+    }
+    .privacy-list li {
+      margin-bottom: 8px;
+    }
+    .privacy-list li::marker {
+      color: var(--tg-muted);
+    }
+
+    .bubble--error {
+      box-shadow: inset 3px 0 0 var(--status-amber);
+    }
+
+    .error-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .error-stack__label {
+      margin: 0 0 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--tg-muted);
+    }
+
+    .page__footer {
+      margin-top: 16px;
+      padding-top: 24px;
+      border-top: 1px solid var(--tg-border);
+      text-align: center;
+      font-size: 13px;
+      color: var(--page-muted);
+    }
+
+    .page__footer a {
+      color: var(--accent);
+    }
+
+    @media (min-width: 480px) {
+      .page {
+        padding-left: var(--space-xl);
+        padding-right: var(--space-xl);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .progress__fill { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#screens">Перейти к экранам</a>
+
+  <div class="page">
+    <header class="page__header">
+      <p class="page__eyebrow">UX Mockup · Telegram Bot</p>
+      <h1 class="page__title">FraudScore</h1>
+      <p class="page__lead">
+        Симуляция экрана Telegram-чата: пузыри бота и пользователя, inline-кнопки,
+        прогресс через <code>edit_message</code>. Ширина чата ~420px.
+      </p>
+    </header>
+
+    <nav aria-label="Экраны прототипа">
+      <ul class="toc">
+        <li><a href="#screen-1">1 · /start</a></li>
+        <li><a href="#screen-2">2 · Формат</a></li>
+        <li><a href="#screen-3">3 · Загрузка</a></li>
+        <li><a href="#screen-4">4 · Прогресс</a></li>
+        <li><a href="#screen-5">5 · Отмена</a></li>
+        <li><a href="#screen-6">6 · Итог</a></li>
+        <li><a href="#screen-7">7 · Ошибки</a></li>
+        <li><a href="#screen-8">8 · Приватность</a></li>
+      </ul>
+    </nav>
+
+    <main id="screens">
+
+      <!-- ========== SCREEN 1 ========== -->
+      <section class="screen" id="screen-1" aria-labelledby="screen-1-title">
+        <div class="screen__label">
+          <span class="screen__num">Экран 1</span>
+          <div>
+            <h2 class="screen__title" id="screen-1-title">/start — онбординг</h2>
+            <p class="screen__note">Первое сообщение после команды /start</p>
+          </div>
+        </div>
+
+        <div class="phone" role="img" aria-label="Чат Telegram: приветствие FraudScore">
+          <header class="chat-header">
+            <span class="chat-header__back" aria-hidden="true">‹</span>
+            <div class="chat-header__avatar" aria-hidden="true">🛡</div>
+            <div class="chat-header__meta">
+              <p class="chat-header__name">FraudScore</p>
+              <p class="chat-header__status">бот</p>
+            </div>
+          </header>
+          <div class="chat">
+            <div class="row row--bot">
+              <div class="bubble bubble--bot">
+                <p class="bubble__text">👋 Я FraudScore — проверяю телефонные номера на признаки фрода.</p>
+                <p class="bubble__text">Пришли CSV со столбцом <strong>phone</strong> (до 500 строк) — верну файл с уровнем риска и признаками.</p>
+                <span class="bubble__time">10:21</span>
+              </div>
+              <div class="keyboard" role="group" aria-label="Inline-кнопки">
+                <div class="keyboard__row">
+                  <button type="button" class="btn-inline">📎 Загрузить CSV</button>
+                </div>
+                <div class="keyboard__row">
+                  <button type="button" class="btn-inline">📄 Формат файла</button>
+                  <button type="button" class="btn-inline">🔒 Данные и приватность</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SCREEN 2 ========== -->
+      <section class="screen" id="screen-2" aria-labelledby="screen-2-title">
+        <div class="screen__label">
+          <span class="screen__num">Экран 2</span>
+          <div>
+            <h2 class="screen__title" id="screen-2-title">Формат файла</h2>
+            <p class="screen__note">Ответ на кнопку «Формат файла»</p>
+          </div>
+        </div>
+
+        <div class="phone" role="img" aria-label="Чат Telegram: требования к CSV">
+          <header class="chat-header">
+            <span class="chat-header__back" aria-hidden="true">‹</span>
+            <div class="chat-header__avatar" aria-hidden="true">🛡</div>
+            <div class="chat-header__meta">
+              <p class="chat-header__name">FraudScore</p>
+              <p class="chat-header__status">бот</p>
+            </div>
+          </header>
+          <div class="chat">
+            <div class="row row--bot">
+              <div class="bubble bubble--bot">
+                <p class="bubble__text"><strong>📄 Формат CSV</strong></p>
+                <ul class="format-list">
+                  <li>Обязательный столбец: <strong>phone</strong></li>
+                  <li>Кодировка: UTF-8</li>
+                  <li>Разделитель: запятая или <strong>;</strong></li>
+                  <li>Лимит: до 500 строк данных</li>
+                </ul>
+                <pre class="code-preview" tabindex="0">phone
++79161234567
++79031112233</pre>
+                <span class="bubble__time">10:22</span>
+              </div>
+              <div class="keyboard" role="group" aria-label="Inline-кнопки">
+                <div class="keyboard__row">
+                  <button type="button" class="btn-inline">◀️ Назад</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SCREEN 3 ========== -->
+      <section class="screen" id="screen-3" aria-labelledby="screen-3-title">
+        <div class="screen__label">
+          <span class="screen__num">Экран 3</span>
+          <div>
+            <h2 class="screen__title" id="screen-3-title">Пользователь загрузил CSV</h2>
+            <p class="screen__note">Пузырь файла юзера → подтверждение бота</p>
+          </div>
+        </div>
+
+        <div class="phone" role="img" aria-label="Чат Telegram: загрузка CSV и подтверждение">
+          <header class="chat-header">
+            <span class="chat-header__back" aria-hidden="true">‹</span>
+            <div class="chat-header__avatar" aria-hidden="true">🛡</div>
+            <div class="chat-header__meta">
+              <p class="chat-header__name">FraudScore</p>
+              <p class="chat-header__status">бот</p>
+            </div>
+          </header>
+          <div class="chat">
+            <div class="row row--user">
+              <div class="bubble bubble--user">
+                <div class="file-card">
+                  <div class="file-card__icon" aria-hidden="true">📄</div>
+                  <div>
+                    <p class="file-card__name">leads_march.csv</p>
+                    <p class="file-card__meta">342 строки</p>
+                  </div>
+                </div>
+                <span class="bubble__time">10:24</span>
+              </div>
+            </div>
+
+            <div class="row row--bot">
+              <div class="bubble bubble--bot">
+                <p class="bubble__text">Файл принят. Нашёл столбец <strong>phone</strong>, 342 номера. Начать проверку?</p>
+                <span class="bubble__time">10:24</span>
+              </div>
+              <div class="keyboard" role="group" aria-label="Inline-кнопки">
+                <div class="keyboard__row">
+                  <button type="button" class="btn-inline">▶️ Начать проверку</button>
+                  <button type="button" class="btn-inline btn-inline--danger">❌ Отмена</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SCREEN 4 ========== -->
+      <section class="screen" id="screen-4" aria-labelledby="screen-4-title">
+        <div class="screen__label">
+          <span class="screen__num">Экран 4</span>
+          <div>
+            <h2 class="screen__title" id="screen-4-title">Прогресс обработки</h2>
+            <p class="screen__note">Одно сообщение, обновляется через edit_message — показаны стадии</p>
+          </div>
+        </div>
+
+        <div class="phone" role="img" aria-label="Чат Telegram: стадии прогресса проверки">
+          <header class="chat-header">
+            <span class="chat-header__back" aria-hidden="true">‹</span>
+            <div class="chat-header__avatar" aria-hidden="true">🛡</div>
+            <div class="chat-header__meta">
+              <p class="chat-header__name">FraudScore</p>
+              <p class="chat-header__status">печатает…</p>
+            </div>
+          </header>
+          <div class="chat">
+            <div class="row row--bot">
+              <!-- Stage A: mid progress -->
+              <div class="bubble bubble--bot stage">
+                <p class="stage__label">Стадия A · edit_message</p>
+                <p class="bubble__text">⏳ Проверяю номера через DaData…</p>
+                <div class="progress" aria-label="Прогресс 120 из 342">
+                  <div class="progress__meta">
+                    <span>Обработано</span>
+                    <strong>120/342 · 35%</strong>
+                  </div>
+                  <div class="progress__track">
+                    <div class="progress__fill" style="width: 35%"></div>
+                  </div>
+                </div>
+                <p class="status-line">🟢 231 · 🟡 74 · 🔴 37 найдено</p>
+                <span class="bubble__time">10:25</span>
+              </div>
+              <div class="keyboard" role="group" aria-label="Inline-кнопки стадии A">
+                <div class="keyboard__row">
+                  <button type="button" class="btn-inline btn-inline--danger">🛑 Отменить</button>
+                </div>
+              </div>
+
+              <!-- Stage B: nearly done -->
+              <div class="bubble bubble--bot stage" style="margin-top: 14px;">
+                <p class="stage__label">Стадия B · edit_message</p>
+                <p class="bubble__text">⏳ Проверяю номера через DaData…</p>
+                <div class="progress" aria-label="Прогресс 280 из 342">
+                  <div class="progress__meta">
+                    <span>Обработано</span>
+                    <strong>280/342 · 82%</strong>
+                  </div>
+                  <div class="progress__track">
+                    <div class="progress__fill" style="width: 82%"></div>
+                  </div>
+                </div>
+                <p class="status-line">🟢 198 · 🟡 58 · 🔴 24 найдено</p>
+                <span class="bubble__time">10:26</span>
+              </div>
+              <div class="keyboard" role="group" aria-label="Inline-кнопки стадии B">
+                <div class="keyboard__row">
+                  <button type="button" class="btn-inline btn-inline--danger">🛑 Отменить</button>
+                </div>
+              </div>
+
+              <!-- Stage C: done -->
+              <div class="bubble bubble--bot stage" style="margin-top: 14px;">
+                <p class="stage__label">Стадия C · edit_message · 100%</p>
+                <p class="bubble__text">✅ Готово. Проверено 342 номера.</p>
+                <div class="progress" aria-label="Прогресс 342 из 342">
+                  <div class="progress__meta">
+                    <span>Обработано</span>
+                    <strong>342/342 · 100%</strong>
+                  </div>
+                  <div class="progress__track">
+                    <div class="progress__fill progress__fill--done" style="width: 100%"></div>
+                  </div>
+                </div>
+                <p class="status-line">🟢 231 · 🟡 74 · 🔴 37 найдено</p>
+                <span class="bubble__time">10:27</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SCREEN 5 ========== -->
+      <section class="screen" id="screen-5" aria-labelledby="screen-5-title">
+        <div class="screen__label">
+          <span class="screen__num">Экран 5</span>
+          <div>
+            <h2 class="screen__title" id="screen-5-title">Отмена проверки</h2>
+            <p class="screen__note">Пользователь нажал «Отменить» на ~120/342</p>
+          </div>
+        </div>
+
+        <div class="phone" role="img" aria-label="Чат Telegram: проверка отменена">
+          <header class="chat-header">
+            <span class="chat-header__back" aria-hidden="true">‹</span>
+            <div class="chat-header__avatar" aria-hidden="true">🛡</div>
+            <div class="chat-header__meta">
+              <p class="chat-header__name">FraudScore</p>
+              <p class="chat-header__status">бот</p>
+            </div>
+          </header>
+          <div class="chat">
+            <div class="row row--bot">
+              <div class="bubble bubble--bot">
+                <p class="bubble__text">Проверка отменена. Обработано 120 из 342, файл не сохранён.</p>
+                <span class="bubble__time">10:25</span>
+              </div>
+              <div class="keyboard" role="group" aria-label="Inline-кнопки">
+                <div class="keyboard__row">
+                  <button type="button" class="btn-inline">📎 Загрузить заново</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SCREEN 6 ========== -->
+      <section class="screen" id="screen-6" aria-labelledby="screen-6-title">
+        <div class="screen__label">
+          <span class="screen__num">Экран 6</span>
+          <div>
+            <h2 class="screen__title" id="screen-6-title">Итоговая выдача</h2>
+            <p class="screen__note">Главный экран: саммари, топ высокого риска, CSV-отчёт</p>
+          </div>
+        </div>
+
+        <div class="phone" role="img" aria-label="Чат Telegram: итоговый отчёт FraudScore">
+          <header class="chat-header">
+            <span class="chat-header__back" aria-hidden="true">‹</span>
+            <div class="chat-header__avatar" aria-hidden="true">🛡</div>
+            <div class="chat-header__meta">
+              <p class="chat-header__name">FraudScore</p>
+              <p class="chat-header__status">бот</p>
+            </div>
+          </header>
+          <div class="chat">
+            <div class="row row--bot">
+              <div class="bubble bubble--bot">
+                <p class="bubble__text">✅ Готово. Проверено 342 номера.</p>
+
+                <ul class="legend">
+                  <li class="legend__item">
+                    <span class="legend__badge text-green">🟢 Низкий риск — 231</span>
+                    <span class="legend__hint">можно работать</span>
+                  </li>
+                  <li class="legend__item">
+                    <span class="legend__badge text-amber">🟡 Средний риск — 74</span>
+                    <span class="legend__hint">проверьте вручную</span>
+                  </li>
+                  <li class="legend__item">
+                    <span class="legend__badge text-red">🔴 Высокий риск — 37</span>
+                    <span class="legend__hint">рекомендуем не звонить</span>
+                  </li>
+                </ul>
+
+                <p class="bubble__text" style="margin-top: 14px;"><strong>🔴 Топ высокого риска (примеры):</strong></p>
+
+                <div class="risk-list">
+                  <article class="risk-card">
+                    <div class="risk-card__top">
+                      <p class="risk-card__phone">+7 916 ***-45-67</p>
+                      <span class="risk-badge">92%</span>
+                    </div>
+                    <ul class="risk-card__signals">
+                      <li>робот/автоответчик в справочнике</li>
+                      <li>номер оператора виртуальной АТС</li>
+                      <li>регион не совпадает с заявленным</li>
+                    </ul>
+                  </article>
+
+                  <article class="risk-card">
+                    <div class="risk-card__top">
+                      <p class="risk-card__phone">+7 903 ***-11-22</p>
+                      <span class="risk-badge">87%</span>
+                    </div>
+                    <ul class="risk-card__signals">
+                      <li>массовые жалобы на спам-звонки</li>
+                      <li>номер из пула call-центра</li>
+                      <li>короткий срок жизни номера</li>
+                    </ul>
+                  </article>
+
+                  <article class="risk-card">
+                    <div class="risk-card__top">
+                      <p class="risk-card__phone">+7 495 ***-88-01</p>
+                      <span class="risk-badge">81%</span>
+                    </div>
+                    <ul class="risk-card__signals">
+                      <li>номер оператора виртуальной АТС</li>
+                      <li>признак автоинформатора</li>
+                      <li>несоответствие кода региона</li>
+                    </ul>
+                  </article>
+                </div>
+
+                <p class="attach-hint">📎 Полный отчёт во вложении</p>
+                <span class="bubble__time">10:27</span>
+              </div>
+
+              <div class="bubble bubble--bot" style="margin-top: 6px; width: 100%;">
+                <div class="file-card">
+                  <div class="file-card__icon" aria-hidden="true">📎</div>
+                  <div>
+                    <p class="file-card__name">fraudscore_report_2024-03.csv</p>
+                    <p class="file-card__meta">342 строки</p>
+                  </div>
+                </div>
+                <span class="bubble__time">10:27</span>
+              </div>
+
+              <div class="keyboard" role="group" aria-label="Inline-кнопки">
+                <div class="keyboard__row">
+                  <button type="button" class="btn-inline">🔄 Проверить ещё файл</button>
+                </div>
+                <div class="keyboard__row">
+                  <button type="button" class="btn-inline btn-inline--danger">🔒 Удалить мои данные</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SCREEN 7 ========== -->
+      <section class="screen" id="screen-7" aria-labelledby="screen-7-title">
+        <div class="screen__label">
+          <span class="screen__num">Экран 7</span>
+          <div>
+            <h2 class="screen__title" id="screen-7-title">Ошибки</h2>
+            <p class="screen__note">Три варианта пузырей с recovery-кнопками</p>
+          </div>
+        </div>
+
+        <div class="phone" role="img" aria-label="Чат Telegram: варианты сообщений об ошибках">
+          <header class="chat-header">
+            <span class="chat-header__back" aria-hidden="true">‹</span>
+            <div class="chat-header__avatar" aria-hidden="true">🛡</div>
+            <div class="chat-header__meta">
+              <p class="chat-header__name">FraudScore</p>
+              <p class="chat-header__status">бот</p>
+            </div>
+          </header>
+          <div class="chat error-stack">
+            <!-- 7a -->
+            <div class="row row--bot" style="max-width: 100%;">
+              <p class="error-stack__label">7а · Нет столбца phone</p>
+              <div class="bubble bubble--bot bubble--error">
+                <p class="bubble__text">⚠️ Не нашёл столбец <strong>phone</strong>. Проверьте заголовок первой строки.</p>
+                <span class="bubble__time">10:30</span>
+              </div>
+              <div class="keyboard" role="group" aria-label="Кнопки ошибки 7а">
+                <div class="keyboard__row">
+                  <button type="button" class="btn-inline">📄 Формат файла</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7b -->
+            <div class="row row--bot" style="max-width: 100%;">
+              <p class="error-stack__label">7б · Превышен лимит</p>
+              <div class="bubble bubble--bot bubble--error">
+                <p class="bubble__text">⚠️ В файле 812 строк, лимит 500. Разбейте файл на части.</p>
+                <span class="bubble__time">10:31</span>
+              </div>
+              <div class="keyboard" role="group" aria-label="Кнопки ошибки 7б">
+                <div class="keyboard__row">
+                  <button type="button" class="btn-inline">📄 Формат файла</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7c -->
+            <div class="row row--bot" style="max-width: 100%;">
+              <p class="error-stack__label">7в · DaData недоступна</p>
+              <div class="bubble bubble--bot bubble--error">
+                <p class="bubble__text">⚠️ Сервис обогащения временно недоступен. Попробуйте через пару минут.</p>
+                <span class="bubble__time">10:32</span>
+              </div>
+              <div class="keyboard" role="group" aria-label="Кнопки ошибки 7в">
+                <div class="keyboard__row">
+                  <button type="button" class="btn-inline">🔁 Повторить</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SCREEN 8 ========== -->
+      <section class="screen" id="screen-8" aria-labelledby="screen-8-title">
+        <div class="screen__label">
+          <span class="screen__num">Экран 8</span>
+          <div>
+            <h2 class="screen__title" id="screen-8-title">Данные и приватность</h2>
+            <p class="screen__note">Согласованные тексты — дословно</p>
+          </div>
+        </div>
+
+        <div class="phone" role="img" aria-label="Чат Telegram: политика данных и приватности">
+          <header class="chat-header">
+            <span class="chat-header__back" aria-hidden="true">‹</span>
+            <div class="chat-header__avatar" aria-hidden="true">🛡</div>
+            <div class="chat-header__meta">
+              <p class="chat-header__name">FraudScore</p>
+              <p class="chat-header__status">бот</p>
+            </div>
+          </header>
+          <div class="chat">
+            <div class="row row--bot">
+              <div class="bubble bubble--bot">
+                <p class="bubble__text"><strong>🔒 Как мы обращаемся с данными</strong></p>
+                <ul class="privacy-list">
+                  <li>Загруженный CSV и результат хранятся 24 часа, затем удаляются автоматически.</li>
+                  <li>Номера телефонов используются только для проверки через DaData и расчёта риска — не передаются третьим лицам и не используются для рекламы.</li>
+                  <li>Доступ к файлам есть только у вас (владельца бота); это личный сервис, чужие пользователи данные не видят.</li>
+                  <li>Команда /delete удаляет ваши файлы и результаты немедленно.</li>
+                  <li>Проверка через DaData обогащает номер публичными справочными данными (регион, оператор, признак робота); сам факт региона или оператора не является доказательством фрода — это сигнал для ручной проверки.</li>
+                </ul>
+                <span class="bubble__time">10:33</span>
+              </div>
+              <div class="keyboard" role="group" aria-label="Inline-кнопки">
+                <div class="keyboard__row">
+                  <button type="button" class="btn-inline btn-inline--danger">🗑 Удалить сейчас</button>
+                  <button type="button" class="btn-inline">◀️ Назад</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="page__footer">
+      <p>
+        Документация флоу:
+        <a href="../docs/fraudscore-bot.md">docs/fraudscore-bot.md</a>
+        ·
+        <a href="design.md">mockups/design.md</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
