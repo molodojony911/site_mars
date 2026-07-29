@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: site_mars:${IMAGE_TAG:-latest}
+    container_name: site_mars_web
+    restart: unless-stopped
+    ports:
+      - "${HOST_PORT:-80}:80"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/healthz"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    env_file:
+      - .env.production
+
+networks:
+  default:
+    name: site_mars_net
